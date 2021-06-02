@@ -1,0 +1,60 @@
+package es.uco.mdas.datos;
+
+import java.util.Date;
+
+public class Socio {
+
+	private Long idSocio;
+	private String nombreSocio;
+	private String apellidosSocio;
+	private Date fechaNacimientoSocio;
+	private int antiguedadSocio;
+	
+	public Socio(Long idSocio, String nombreSocio, String apellidosSocio, Date fechaNacimientoSocio, int antiguedadSocio) {
+		this.nombreSocio = nombreSocio;
+		this.apellidosSocio = apellidosSocio;
+		this.fechaNacimientoSocio = fechaNacimientoSocio;
+		this.antiguedadSocio = antiguedadSocio;
+	}
+
+	public Long getIdSocio() {
+		return idSocio;
+	}
+	
+	public String getNombreSocio() {
+		return nombreSocio;
+	}
+	
+	public String getApellidosSocio() {
+		return apellidosSocio;
+	}
+	
+	public Date getFechaNacimientoSocio() {
+		return fechaNacimientoSocio;
+	}
+	
+	public int getAntiguedadSocio() {
+		return antiguedadSocio;
+	}
+	
+	public void setIdSocio(Long idSocio) {
+		this.idSocio = idSocio;
+	}
+	
+	public void setNombreSocio(String nombreSocio) {
+		this.nombreSocio = nombreSocio;
+	}
+	
+	public void setApellidosSocio(String apellidosSocio) {
+		this.apellidosSocio = apellidosSocio;
+	}
+	
+	public void setFechaNacimiento(Date fechaNacimientoSocio) {
+		this.fechaNacimientoSocio = fechaNacimientoSocio;
+	}
+	
+	public void setAntiguedadSocio(int antiguedadSocio) {
+		this.antiguedadSocio = antiguedadSocio;
+	}
+}
+
