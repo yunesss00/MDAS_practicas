@@ -1,0 +1,2 @@
+ficheroAbonosDisponibles=abonosDisponibles.txt
+ficheroAbonosFutbol=abonosFutbol.txt
