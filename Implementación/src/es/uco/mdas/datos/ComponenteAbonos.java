@@ -18,11 +18,13 @@ public class ComponenteAbonos extends Abono{
 	
 	private PropertiesFile p = new PropertiesFile();
 	private String nombreFicheroAbonosDisponibles;
-	private String nombreFicheroAbonosFutbol;
+	private String tiposAbono;
+	private String deportesAbono;
 		
 	private ComponenteAbonos() {
 		nombreFicheroAbonosDisponibles = p.getFicheroAbonosDisponibles();
-		nombreFicheroAbonosFutbol = p.getFicheroAbonosFutbol();
+		tiposAbono = p.getTiposAbono();
+		deportesAbono = p.getDeportesAbono();
 	}
 	
 	public static ComponenteAbonos getInstance() {
@@ -31,8 +33,24 @@ public class ComponenteAbonos extends Abono{
         }
         return instance;
     }
-	
-	public void darDeAltaAbono(Abono abono, Socio socio) {
+	/**
+	 * Es correcto si el deporte y el tipo de abono existen en el sistema
+	 * @param abono
+	 * @return validación
+	 */
+	public Boolean comprobarDatosAbono(Abono abono) {
+		
+		if (tiposAbono.contains(abono.getTipoAbono()) && 
+				deportesAbono.contains(abono.getDeporteAbono())) return true;
+		return false;
+
+	}
+	/**
+	 * Da de alta un abono de un tipo y deporte determinados.
+	 * @param abono
+	 * @param idSocio
+	 */
+	public void darDeAltaAbono(Abono abono, Long idSocio) {
 		
 		File f;
 		String nombreFichero = "abonos" + abono.getDeporteAbono() + ".txt"; 
@@ -50,7 +68,7 @@ public class ComponenteAbonos extends Abono{
 			
 			while((linea = reader.readLine()) != null) 
 			{
-				if (linea .contains(Long.toString(socio.getIdSocio())))
+				if (linea .contains(Long.toString(idSocio)))
 				{
 					System.out.println("El socio ya dispone de este abono.");
 					break;
@@ -60,10 +78,17 @@ public class ComponenteAbonos extends Abono{
 				BufferedWriter bw = new BufferedWriter(w);
 				PrintWriter wr = new PrintWriter(bw);
 				
-				if () 
+				if (comprobarDatosAbono(abono)) 
 				{
-					
+					wr.append(abono.getIdAbono() + "_" + idSocio + "\n");
 				}
+				else 
+				{
+					System.out.println("El deporte o el tipo de abono son incorrectos.");
+				}
+				
+				wr.close();
+				bw.close();
 			}
 		
 		}catch (IOException e) {}

@@ -1,2 +1,4 @@
 ficheroAbonosDisponibles=abonosDisponibles.txt
 ficheroAbonosFutbol=abonosFutbol.txt
+tiposAbono=liga,completo
+deportesAbono=futbol
