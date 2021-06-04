@@ -1,4 +1,4 @@
-package es.uco.mdas.sistema.abono;
+package es.uco.mdas.datos;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -7,9 +7,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Random;
 
+import es.uco.mdas.datos.Abono;
+import es.uco.mdas.datos.Socio;
 import es.uco.mdas.datos.PropertiesFile;
-import es.uco.mdas.negocio.socio.Socio;
 
 public class ComponenteAbonos extends Abono{
 
@@ -82,6 +84,9 @@ public class ComponenteAbonos extends Abono{
 		
 		if (tiposAbono.contains(abono.getTipoAbono()) && 
 				deportesAbono.contains(abono.getDeporteAbono())) return true;
+		System.out.println("El deporte o el tipo de abono son incorrectos.");
+		System.out.println("Los deportes disponibles son: " + deportesAbono + "." );
+		System.out.println("Los tipos de abono disponibles son: " + tiposAbono + ".");
 		return false;
 
 	}
@@ -114,9 +119,10 @@ public class ComponenteAbonos extends Abono{
 			
 			while((linea = reader.readLine()) != null) 
 			{
-				partes = linea.split("-");
-				linea = partes[1];
-				if(linea.trim().equals(Long.toString(idSocio))) {
+				//partes = linea.split("-");
+				//linea = partes[1];
+				if(linea.contains(Long.toString(idSocio))) {
+					System.out.println("Este socio ya dispone de un abono de este deporte.");
 					return true;
 				}
 			}
@@ -153,18 +159,22 @@ public class ComponenteAbonos extends Abono{
 			if (comprobarDatosAbono(abono) && !comprobarExistenciaAbono(abono,idSocio)) 
 			{
 				wr.append(abono.getIdAbono() + "-" + idSocio + "\n");
-			}
-			else 
-			{
-				System.out.println("El deporte o el tipo de abono son incorrectos.");
+				generarAbono(abono,idSocio);
+				modificarAbonosDisponibles(abono.getDeporteAbono());
 			}
 			
 			wr.close();
 			bw.close();
-			generarAbono(abono,idSocio);
-			modificarAbonosDisponibles(abono.getDeporteAbono());
+			
 		
 		}catch (IOException e) {}
+	}
+	
+	public void setIdAbono(Abono abono) {
+		int idMaximo = 9999;
+		Random valor = new Random();
+    	long idAbono = (long) valor.nextInt(idMaximo);
+    	abono.setIdAbono(idAbono);
 	}
 	
 	/**
@@ -173,7 +183,6 @@ public class ComponenteAbonos extends Abono{
 	 * @param idSocio
 	 */
 	public void generarAbono(Abono abono, Long idSocio) {
-		
 		File f;
 		String nombreFichero = Long.toString(idSocio) + ".txt";
 		f= new File(nombreFichero);
@@ -236,11 +245,11 @@ public class ComponenteAbonos extends Abono{
 			boolean correcto = ficheroEscritura.renameTo(ficheroLectura);
 			if(correcto)
 			{
-				System.out.println("Se ha renombrado satisfactoriamente el fichero.");
+				System.out.println("Abonos disponibles modificado satisfactoriamente.");
 			}
 			else
 			{
-				System.out.println("No se ha renombrado correctamente.");
+				System.out.println("Error: Abonos disponibles no ha sido modificado.");
 			}
 			
 		}catch(IOException e) {}
