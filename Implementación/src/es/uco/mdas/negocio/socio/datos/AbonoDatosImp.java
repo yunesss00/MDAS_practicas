@@ -14,7 +14,7 @@ import java.util.Properties;
 
 import es.uco.mdas.negocio.socio.Abono;
 
-public class AbonoDatosImp implements AbonoDatos{
+public class AbonoDatosImp implements IAbonoDatos{
 
     @Override
     public Abono consutarPorID(String idAbono) {
@@ -23,21 +23,18 @@ public class AbonoDatosImp implements AbonoDatos{
     }
 
     @Override
-    public boolean modificar(Abono abono) {
+    public void modificar(Abono abono) {
         // TODO Auto-generated method stub
-        return false;
     }
 
     @Override
-    public boolean insertar(Abono abono) {
+    public void insertar(Abono abono) {
         // TODO Auto-generated method stub
-        return false;
     }
 
     @Override
-    public boolean borrar(String idAbono) {
+    public void borrar(String idAbono) {
         // TODO Auto-generated method stub
-        return false;
     }
     
 }

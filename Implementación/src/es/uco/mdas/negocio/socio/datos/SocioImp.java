@@ -1,31 +1,14 @@
-package es.uco.mdas.negocio;
-
-import java.net.SocketOption;
+package es.uco.mdas.negocio.socio.datos;
 
 import es.uco.mdas.negocio.socio.Abono;
 import es.uco.mdas.negocio.socio.ISocio;
-import es.uco.mdas.negocio.socio.datos.AbonoDatosImp;
-import es.uco.mdas.negocio.socio.datos.IAbonoDatos;
-import es.uco.mdas.negocio.socio.datos.ISocioDatos;
-import es.uco.mdas.negocio.socio.datos.SocioDatosImp;
 
 public class SocioImp implements ISocio{
 
-    private IAbonoDatos abonoDatos;
-    private ISocioDatos socioDatos;
-
-    public SocioImp(IAbonoDatos abonoDatos, ISocioDatos socioDatos) {
-        this.abonoDatos = abonoDatos;
-        this.socioDatos = socioDatos;
-    }
-
     @Override
     public boolean darDeAltaAbono(Abono abono) {
-        if () 
-        {
-            
-        }
-        
+        // TODO Auto-generated method stub
+        return false;
     }
 
     @Override

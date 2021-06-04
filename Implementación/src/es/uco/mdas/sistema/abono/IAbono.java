@@ -7,19 +7,19 @@ public interface IAbono {
      * Da de alta un abono
      * @param abono
      */
-    public void darDeAltaAbono(Abono abono);
+    public boolean darDeAltaAbono(Abono abono);
 
     /**
      * Elimina un abono
      * @param idAbono
      */
-    public void darDeBajaAbono(Long idAbono);
+    public boolean darDeBajaAbono(Long idAbono);
 
     /**
      * Cambia la fecha de expedicion de un abono
      * @param idAbono
      */
-    public void renovarAbono(Long idAbono);
+    public boolean renovarAbono(Long idAbono);
     
     /**
      * Muestra un abono

@@ -3,11 +3,11 @@ package es.uco.mdas.negocio.socio.datos;
 
 public interface Datos <T>{
 		
-	public T consutarPorID(String idAbono);
+	public T consutarPorID(String idObjeto);
 	
-	public boolean modificar(T abono);
+	public void modificar(T objeto);
 	
-	public boolean insertar(T abono);
+	public void insertar(T objeto);
 	
-	public boolean borrar(String idAbono);
+	public void borrar(String idObjeto);
 }
