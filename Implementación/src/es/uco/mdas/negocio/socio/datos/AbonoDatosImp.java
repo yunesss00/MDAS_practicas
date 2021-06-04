@@ -17,7 +17,7 @@ import es.uco.mdas.negocio.socio.Abono;
 public class AbonoDatosImp implements IAbonoDatos{
 
     @Override
-    public Abono consutarPorID(String idAbono) {
+    public Abono consutarPorID(Long idAbono) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -33,8 +33,9 @@ public class AbonoDatosImp implements IAbonoDatos{
     }
 
     @Override
-    public void borrar(String idAbono) {
+    public void borrar(long idAbono) {
         // TODO Auto-generated method stub
+        
     }
     
 }

@@ -1,9 +1,9 @@
 package es.uco.mdas.sistema.abono;
 
-import es.uco.mdas.negocio.SocioImp;
 import es.uco.mdas.negocio.clubDeportivo.IGestorAbonos;
 import es.uco.mdas.negocio.socio.Abono;
 import es.uco.mdas.negocio.socio.ISocio;
+import es.uco.mdas.negocio.socio.SocioImp;
 import es.uco.mdas.negocio.socio.datos.AbonoDatosImp;
 import es.uco.mdas.negocio.socio.datos.SocioDatosImp;
 
