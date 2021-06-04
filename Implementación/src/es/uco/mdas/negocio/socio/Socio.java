@@ -1,4 +1,4 @@
-package es.uco.mdas.datos;
+package es.uco.mdas.negocio.socio;
 
 import java.util.Date;
 

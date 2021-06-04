@@ -1,4 +1,4 @@
-package es.uco.mdas.datos;
+package es.uco.mdas.sistema.abono;
 
 import java.util.Date;
 import java.time.LocalDate;

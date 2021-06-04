@@ -1,4 +1,4 @@
-package es.uco.mdas.datos;
+package es.uco.mdas.sistema.abono;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -8,9 +8,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import es.uco.mdas.datos.Abono;
-import es.uco.mdas.datos.Socio;
 import es.uco.mdas.datos.PropertiesFile;
+import es.uco.mdas.negocio.socio.Socio;
 
 public class ComponenteAbonos extends Abono{
 
