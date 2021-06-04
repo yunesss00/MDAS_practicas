@@ -237,7 +237,7 @@ public class ComponenteAbonos extends Abono{
 			boolean correcto = ficheroEscritura.renameTo(ficheroLectura);
 			if(correcto)
 			{
-				System.out.println("Se ha renomrado satisfactoriamente el fichero.");
+				System.out.println("Se ha renombrado satisfactoriamente el fichero.");
 			}
 			else
 			{
