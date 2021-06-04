@@ -1,6 +1,4 @@
-package es.uco.mdas.negocio;
-
-import es.uco.mdas.negocio.socio.Abono;
+package es.uco.mdas.negocio.socio;
 
 public interface ISocio {
     
