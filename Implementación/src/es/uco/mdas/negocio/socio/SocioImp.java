@@ -27,9 +27,10 @@ public class SocioImp implements SocioMgt{
     }
 
     @Override
-    public boolean darDeBajaAbono(Long idAbono) {
-        // TODO Auto-generated method stub
-        return false;
+    public boolean darDeBajaAbono(Abono abono) {
+        Abono informacionAbono = obtenerInformacionAbono(abono.getIdAbono());
+        if(informacionAbono == null) return false;
+        return abonoDatos.borrar(abono);
     }
 
     @Override
@@ -40,8 +41,8 @@ public class SocioImp implements SocioMgt{
 
     @Override
     public Abono obtenerInformacionAbono(Long idAbono) {
-        // TODO Auto-generated method stub
-        return null;
+        Abono informacionAbono = abonoDatos.buscar(idAbono);
+        return informacionAbono;
     }
 
 	@Override

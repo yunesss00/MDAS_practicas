@@ -5,27 +5,27 @@ import es.uco.mdas.negocio.socio.Socio;
 public class SocioDatosImp implements SocioDatos{
 
     @Override
-    public Socio buscar(Long idAbono) {
+    public boolean insertar(Socio socio) {
+        return false;
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public boolean borrar(Socio socio) {
+        return false;
+        // TODO Auto-generated method stub
+        
+    }
+    
+    @Override
+    public Socio buscar(Long idSocio) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public boolean modificar(Socio abono) {
-        return false;
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public boolean insertar(Socio abono) {
-        return false;
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public boolean borrar(Long idAbono) {
+    public boolean modificar(Socio socio) {
         return false;
         // TODO Auto-generated method stub
         

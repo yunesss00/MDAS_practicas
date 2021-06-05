@@ -13,7 +13,7 @@ public interface IAbono {
      * Elimina un abono
      * @param idAbono
      */
-    public boolean darDeBajaAbono(Long idAbono);
+    public boolean darDeBajaAbono(Abono abono);
 
     /**
      * Cambia la fecha de expedicion de un abono

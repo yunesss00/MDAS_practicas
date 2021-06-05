@@ -26,18 +26,6 @@ public class AbonoDatosImp implements AbonoDatos{
     }
 
     @Override
-    public Abono buscar(Long idAbono) {
-
-        return null;
-    }
-
-    @Override
-    public boolean modificar(Abono abono) {
-        return false;
-        // TODO Auto-generated method stub
-    }
-
-    @Override
     public boolean insertar(Abono abono) {
         Boolean resultado = true;
 
@@ -103,6 +91,7 @@ public class AbonoDatosImp implements AbonoDatos{
 			reader.close();
 			writer.close();
 			ficheroLectura.delete();
+            ficheroEscritura.renameTo(ficheroLectura);
 			
 		}catch(IOException e) {}
     }
@@ -175,6 +164,7 @@ public class AbonoDatosImp implements AbonoDatos{
     }
 
     private boolean comprobarDisponiblidadAbono(String deporteAbono) {
+        String noDisponible = "0";
         File f;
 		String nombreFichero = nombreFicheroAbonosDisponibles; 
 		f= new File(nombreFichero);
@@ -191,25 +181,77 @@ public class AbonoDatosImp implements AbonoDatos{
 				partes = linea.split("-");
 				linea = partes[1];
 			
-				if(partes[0] == deporteAbono && linea.trim().equals(Integer.toString(0)))
+				if(partes[0] == deporteAbono && linea.trim().equals(noDisponible))
 					reader.close();
                     return false;
 			}
 			reader.close();
 		
 		}catch(FileNotFoundException e) {
+            e.printStackTrace();
             System.out.println("No existe el fichero" + nombreFichero);
-        }catch(IOException e) {}
+        }catch(IOException e) {
+            e.printStackTrace();
+        }
 		return true;
     }
 
 
 
     @Override
-    public boolean borrar(Long idObjeto) {
+    public boolean borrar(Abono abono) {
+        Boolean resultado = true;
+        String nombreFichero = "abonos" + abono.getDeporteAbono() + ".txt";
+        File ficheroLectura = new File(nombreFichero);
+        File ficheroEscritura = new File("temporal.txt");
+        
+        try{
+            BufferedReader reader = new BufferedReader(new FileReader(ficheroLectura));
+			BufferedWriter writer = new BufferedWriter(new FileWriter(ficheroEscritura));
+			String linea;
+            String[] partes;
+
+            while((linea = reader.readLine()) != null){
+                partes = linea.split("-");
+                linea = partes[1];
+                if(linea.equals(Long.toString(abono.getIdAbono()))) 
+                {
+                    linea = reader.readLine();
+                }
+                else
+                {
+                    writer.write(linea + "\n");
+                }
+                
+            }
+            writer.close();
+			reader.close();
+			ficheroLectura.delete();
+            ficheroEscritura.renameTo(ficheroLectura);
+
+        }catch(FileNotFoundException e){
+            e.printStackTrace();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        
+        
+        
+        return resultado; 
+    }
+
+    @Override
+    public Abono buscar(Long idAbono) {
+
+        return null;
+    }
+
+    @Override
+    public boolean modificar(Abono abono) {
         return false;
         // TODO Auto-generated method stub
-        
     }
+
+    
     
 }
