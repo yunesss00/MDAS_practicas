@@ -6,7 +6,7 @@ public interface Datos <T>{
 	
 	public boolean borrar(T objeto);
 
-	public T buscar(Long idObjeto);
+	public T buscar(long idObjeto);
 	
 	public boolean modificar(T objeto);
 	
