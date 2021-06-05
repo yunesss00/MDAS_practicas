@@ -2,7 +2,7 @@ package es.uco.mdas.negocio.socio.datos;
 
 import es.uco.mdas.negocio.socio.Socio;
 
-public class SocioDatosImp implements ISocioDatos{
+public class SocioDatosImp implements SocioDatos{
 
     @Override
     public Socio buscar(Long idAbono) {
@@ -11,19 +11,22 @@ public class SocioDatosImp implements ISocioDatos{
     }
 
     @Override
-    public void modificar(Socio abono) {
+    public boolean modificar(Socio abono) {
+        return false;
         // TODO Auto-generated method stub
         
     }
 
     @Override
-    public void insertar(Socio abono) {
+    public boolean insertar(Socio abono) {
+        return false;
         // TODO Auto-generated method stub
         
     }
 
     @Override
-    public void borrar(Long idAbono) {
+    public boolean borrar(Long idAbono) {
+        return false;
         // TODO Auto-generated method stub
         
     }

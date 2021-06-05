@@ -5,9 +5,9 @@ public interface Datos <T>{
 		
 	public T buscar(Long idObjeto);
 	
-	public void modificar(T objeto);
+	public boolean modificar(T objeto);
 	
-	public void insertar(T objeto);
+	public boolean insertar(T objeto);
 	
-	public void borrar(Long idObjeto);
+	public boolean borrar(Long idObjeto);
 }

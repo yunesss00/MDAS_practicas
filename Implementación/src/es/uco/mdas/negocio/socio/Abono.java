@@ -10,6 +10,7 @@ public class Abono implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private Long idAbono;
+	private Long idSocio;
 	private LocalDate fechaExpedicionAbono;
 	private String deporteAbono;
 	private String tipoAbono;
@@ -18,17 +19,21 @@ public class Abono implements Serializable{
 	
 	public Abono() {}
 	
-	public Abono(String deporteAbono, String tipoAbono) {
+	public Abono(String deporteAbono, String tipoAbono, Long idSocio) {
 		this.deporteAbono = deporteAbono;
 		this.tipoAbono = tipoAbono;
 		this.localidad = 0;
 		this.idAbono = null;
+		this.idSocio = idSocio;
 		this.fechaExpedicionAbono = null;
 
 	
 	}
 	
-	
+	public Long getIdSocio(){
+		return idSocio;
+	}
+
 	public Long getIdAbono() {
 		return idAbono;
 	}
@@ -49,6 +54,10 @@ public class Abono implements Serializable{
 		return localidad;
 	}
 	
+	
+	public void setIdSocio(long idSocio) {
+		this.idSocio = idSocio;
+	}
 	
 	public void setIdAbono(long idAbono) {
 		this.idAbono = idAbono;

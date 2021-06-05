@@ -6,26 +6,23 @@ import es.uco.mdas.negocio.socio.Abono;
 import es.uco.mdas.negocio.socio.SocioMgt;
 import es.uco.mdas.negocio.socio.datos.AbonoDatosImp;
 import es.uco.mdas.negocio.socio.datos.IAbonoDatos;
-import es.uco.mdas.negocio.socio.datos.ISocioDatos;
+import es.uco.mdas.negocio.socio.datos.SocioDatos;
 import es.uco.mdas.negocio.socio.datos.SocioDatosImp;
 
 public class SocioImp implements SocioMgt{
 
     private IAbonoDatos abonoDatos;
-    private ISocioDatos socioDatos;
+    private SocioDatos socioDatos;
 
-    public SocioImp(IAbonoDatos abonoDatos, ISocioDatos socioDatos) {
+    public SocioImp(IAbonoDatos abonoDatos, SocioDatos socioDatos) {
         this.abonoDatos = abonoDatos;
         this.socioDatos = socioDatos;
     }
 
     @Override
     public boolean darDeAltaAbono(Abono abono) {
-        if (abonoDatos.buscar(abono.getIdAbono()) == null) 
-        {
-            
-        }
-		return false;
+
+		return abonoDatos.insertar(abono);
         
     }
 

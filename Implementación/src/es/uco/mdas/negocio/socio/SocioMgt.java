@@ -1,7 +1,5 @@
 package es.uco.mdas.negocio.socio;
 
-import es.uco.mdas.negocio.socio.Socio;
-
 public interface SocioMgt {
     
     public boolean darDeAltaAbono(Abono abono);

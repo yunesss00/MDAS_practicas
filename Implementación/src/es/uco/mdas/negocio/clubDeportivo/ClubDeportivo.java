@@ -1,5 +1,5 @@
 package es.uco.mdas.negocio.clubDeportivo;
 
-public class ClubDeportivo implements IGestorAbonos{
+public class ClubDeportivo implements GestorAbonos{
     
 }
