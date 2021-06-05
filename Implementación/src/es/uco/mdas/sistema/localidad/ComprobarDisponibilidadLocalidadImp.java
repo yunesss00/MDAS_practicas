@@ -1,25 +1,24 @@
 package es.uco.mdas.sistema.localidad;
 
-import es.uco.mdas.negocio.clubDeportivo.ObjetoLocalidad;
-import es.uco.mdas.negocio.clubDeportivo.datos.LocalidadDatosImp;
+import es.uco.mdas.negocio.clubDeportivo.ClubDeportivoMgtImp;
+
 
 public class ComprobarDisponibilidadLocalidadImp implements ComprobarDisponibilidadLocalidad{
-	
-	LocalidadDatosImp localidadDatos;
-	private static final String RESERVADO = "RESERVADO";
-	private static final String DISPONIBLE = "DISPONIBLE";
+	private ClubDeportivoMgtImp gestorClub;
+	private BuscarLocalidadImp buscarLocalidad;
 
 	@Override
 	public boolean comprobarReservaLocalidad(Long idLocalidad) {
-		ObjetoLocalidad localidad = localidadDatos.buscar(idLocalidad);
-		if(localidad.getEstado() == RESERVADO) return true;
+		if(buscarLocalidad.comprobarExistenciaLocalidad(idLocalidad))
+			return gestorClub.comprobarReservaLocalidad(idLocalidad);
 		return false;
 	}
 
 	@Override
 	public String notificarDisponibilidadLocalidad(Long idLocalidad) {
-		ObjetoLocalidad localidad = localidadDatos.buscar(idLocalidad);
-		return localidad.getEstado();
+		if(buscarLocalidad.comprobarExistenciaLocalidad(idLocalidad))
+			return gestorClub.notificarDisponibilidadLocalidad(idLocalidad);
+		return null;
 	}
 
 

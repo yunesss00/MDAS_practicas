@@ -1,23 +1,21 @@
 package es.uco.mdas.sistema.localidad;
 
-import es.uco.mdas.negocio.clubDeportivo.ObjetoLocalidad;
-import es.uco.mdas.negocio.clubDeportivo.datos.LocalidadDatosImp;
+import es.uco.mdas.negocio.clubDeportivo.ClubDeportivoMgtImp;
 
 public class VenderEntradaImp implements VenderEntrada {
 	
-	LocalidadDatosImp localidadDatos;
-	private static final String RESERVADO = "RESERVADO";
+	private ClubDeportivoMgtImp gestorClub;
+	private BuscarLocalidadImp buscarLocalidad;
 	
 	@Override
 	public void actualizarLocalidad(Long idLocalidad) {
-		ObjetoLocalidad localidad = localidadDatos.buscar(idLocalidad);
-		localidad.setEstado(RESERVADO);	
+		if(buscarLocalidad.comprobarExistenciaLocalidad(idLocalidad))
+			gestorClub.actualizarLocalidad(idLocalidad);
 	}
 
 	@Override
 	public String notificarPago(Long idLocalidad) {
-		ObjetoLocalidad localidad = localidadDatos.buscar(idLocalidad);
-		return localidad.infoLocalidad();
+		return gestorClub.notificarPago(idLocalidad);
 	}
 
 }
