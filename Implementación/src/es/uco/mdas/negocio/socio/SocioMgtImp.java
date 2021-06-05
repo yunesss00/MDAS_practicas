@@ -1,17 +1,11 @@
 package es.uco.mdas.negocio.socio;
 
-import java.net.SocketOption;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 
-import es.uco.mdas.negocio.socio.ObjetoSocio;
-import es.uco.mdas.negocio.socio.ObjetoAbono;
-import es.uco.mdas.negocio.socio.SocioMgt;
-import es.uco.mdas.negocio.socio.datos.AbonoDatosImp;
 import es.uco.mdas.negocio.socio.datos.AbonoDatos;
 import es.uco.mdas.negocio.socio.datos.SocioDatos;
-import es.uco.mdas.negocio.socio.datos.SocioDatosImp;
 
 public class SocioMgtImp implements SocioMgt{
 
@@ -43,6 +37,7 @@ public class SocioMgtImp implements SocioMgt{
     public boolean renovarAbono(Long idAbono) {
         ObjetoAbono informacionAbono = obtenerInformacionAbono(idAbono);
 		if (informacionAbono == null) return false; 
+		informacionAbono.setFechaExpedicionAbono();
         return abonoDatos.modificar(informacionAbono);
     }
 
