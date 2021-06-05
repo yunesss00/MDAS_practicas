@@ -1,2 +1,9 @@
 /Localidad.class
 /Entrada.class
+/DetallesEntrada.class
+/DetallesLocalidad.class
+/BuscarLocalidad.class
+/ComprobarDisponibilidadLocalidad.class
+/VenderEntrada.class
+/EntradaImp.class
+/LocalidadImp.class
