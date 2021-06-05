@@ -10,6 +10,7 @@ import java.util.Properties;
 public class PropertiesFile {
 
 	private String ficheroAbonosDisponibles;
+    private String ficheroAbonos;
 	private String tiposAbono;
 	private String deportesAbono;
 	
@@ -22,6 +23,7 @@ public class PropertiesFile {
 
             this.ficheroAbonosDisponibles = prop.getProperty("ficheroAbonosDisponibles");
             this.tiposAbono = prop.getProperty("tiposAbono");
+            this.ficheroAbonos = prop.getProperty("ficheroAbonos");
             this.deportesAbono = prop.getProperty("deportesAbono");
             
         } catch (FileNotFoundException e) {
@@ -32,6 +34,10 @@ public class PropertiesFile {
         }
     }
 	
+    public String getFicheroAbonos(){
+        return ficheroAbonos;
+    }
+
 	public String getFicheroAbonosDisponibles() {
 		return ficheroAbonosDisponibles;
 	}

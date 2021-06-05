@@ -16,11 +16,13 @@ public class AbonoDatosImp implements AbonoDatos{
 
     private PropertiesFile p = new PropertiesFile();
     private String nombreFicheroAbonosDisponibles;
+    private String nombreFicheroAbonos;
 	private String tiposAbono;
 	private String deportesAbono;
 
     public AbonoDatosImp(){
         nombreFicheroAbonosDisponibles = p.getFicheroAbonosDisponibles();
+        nombreFicheroAbonos = p.getFicheroAbonos();
 		tiposAbono = p.getTiposAbono();
 		deportesAbono = p.getDeportesAbono();
     }
@@ -31,8 +33,7 @@ public class AbonoDatosImp implements AbonoDatos{
 
         if (comprobarDisponiblidadAbono(abono.getDeporteAbono())) {
             File f;
-            String nombreFichero = "abonos" + abono.getDeporteAbono() + ".txt";
-            f = new File(nombreFichero);
+            f = new File(nombreFicheroAbonos);
 
             try{
 
@@ -45,8 +46,14 @@ public class AbonoDatosImp implements AbonoDatos{
 
                 if (comprobarDatosAbono(abono) && !comprobarExistenciaAbono(abono)) 
 			{
-				wr.append(abono.getIdAbono() + "-" + abono.getIdSocio() + "\n");
-				generarAbono(abono);
+				wr.append(abono.getIdAbono() + "\n");
+                wr.append(abono.getIdSocio() + "\n");
+                wr.append(abono.getDeporteAbono() + "\n");
+			    wr.append(abono.getTipoAbono() + "\n");
+			    wr.append(abono.getFechaExpedicionAbono() + "\n");
+			    wr.append(abono.getLocalidad() + "\n");
+				//generarAbono(abono);
+        
 				modificarAbonosDisponibles(abono.getDeporteAbono(),"insertar");
 			}
 			
@@ -103,7 +110,7 @@ public class AbonoDatosImp implements AbonoDatos{
 		}catch(IOException e) {}
     }
 
-    private void generarAbono(Abono abono) {
+    /*private void generarAbono(Abono abono) {
         File f;
 		String nombreFichero = Long.toString(abono.getIdAbono()) + ".txt";
 		f= new File(nombreFichero);
@@ -129,25 +136,21 @@ public class AbonoDatosImp implements AbonoDatos{
 			bw.close();
 
 		} catch(IOException e) {}
-    }
+    }*/
 
     private boolean comprobarExistenciaAbono(Abono abono) {
         File f;
-		String nombreFichero = "abonos" + abono.getDeporteAbono() + ".txt"; 
-		f= new File(nombreFichero);
+		f= new File(nombreFicheroAbonos);
 		
 		try {
 
-			BufferedReader reader = new BufferedReader(new FileReader(nombreFichero));
+			BufferedReader reader = new BufferedReader(new FileReader(nombreFicheroAbonos));
 			String linea;
-			String[] partes;
 			System.out.println("Comprobando si el socio ya posee este abono");
 			
 			while((linea = reader.readLine()) != null) 
 			{
-				partes = linea.split("-");
-				linea = partes[1];
-				if(linea.equals(Long.toString(abono.getIdAbono()))) {
+				if(linea.trim().equals(Long.toString(abono.getIdAbono()))) {
 					System.out.println("Este socio ya dispone de un abono de este deporte.");
 					reader.close();
                     return true;
@@ -156,7 +159,7 @@ public class AbonoDatosImp implements AbonoDatos{
 			reader.close();
 			
 		}catch(FileNotFoundException e){
-            System.out.println("No existe el fichero" + nombreFichero);
+            System.out.println("No existe el fichero" + nombreFicheroAbonos);
         }catch(IOException e) {}
 		return false;
     }

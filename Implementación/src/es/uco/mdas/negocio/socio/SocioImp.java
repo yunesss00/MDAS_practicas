@@ -25,8 +25,10 @@ public class SocioImp implements SocioMgt{
 
     @Override
     public boolean darDeAltaAbono(Abono abono) {
-
-		return abonoDatos.insertar(abono);
+        Abono informacionAbono = obtenerInformacionAbono(abono.getIdAbono());
+        if (informacionAbono == null) return abonoDatos.insertar(abono);
+        return false;
+        
         
     }
 
