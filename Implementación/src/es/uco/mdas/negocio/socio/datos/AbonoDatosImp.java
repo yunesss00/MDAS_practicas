@@ -12,7 +12,7 @@ import java.io.PrintWriter;
 import es.uco.mdas.datos.PropertiesFile;
 import es.uco.mdas.negocio.socio.Abono;
 
-public class AbonoDatosImp implements IAbonoDatos{
+public class AbonoDatosImp implements AbonoDatos{
 
     private PropertiesFile p = new PropertiesFile();
     private String nombreFicheroAbonosDisponibles;

@@ -5,16 +5,16 @@ import java.net.SocketOption;
 import es.uco.mdas.negocio.socio.Abono;
 import es.uco.mdas.negocio.socio.SocioMgt;
 import es.uco.mdas.negocio.socio.datos.AbonoDatosImp;
-import es.uco.mdas.negocio.socio.datos.IAbonoDatos;
+import es.uco.mdas.negocio.socio.datos.AbonoDatos;
 import es.uco.mdas.negocio.socio.datos.SocioDatos;
 import es.uco.mdas.negocio.socio.datos.SocioDatosImp;
 
 public class SocioImp implements SocioMgt{
 
-    private IAbonoDatos abonoDatos;
+    private AbonoDatos abonoDatos;
     private SocioDatos socioDatos;
 
-    public SocioImp(IAbonoDatos abonoDatos, SocioDatos socioDatos) {
+    public SocioImp(AbonoDatos abonoDatos, SocioDatos socioDatos) {
         this.abonoDatos = abonoDatos;
         this.socioDatos = socioDatos;
     }
