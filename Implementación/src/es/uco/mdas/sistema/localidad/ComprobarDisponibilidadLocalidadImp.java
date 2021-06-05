@@ -6,13 +6,13 @@ import es.uco.mdas.negocio.clubDeportivo.datos.LocalidadDatosImp;
 public class ComprobarDisponibilidadLocalidadImp implements ComprobarDisponibilidadLocalidad{
 	
 	LocalidadDatosImp localidadDatos;
-	String reservado = "RESERVADO";
-	String disponible = "DISPONIBLE";
+	private static final String RESERVADO = "RESERVADO";
+	private static final String DISPONIBLE = "DISPONIBLE";
 
 	@Override
 	public boolean comprobarReservaLocalidad(Long idLocalidad) {
 		ObjetoLocalidad localidad = localidadDatos.buscar(idLocalidad);
-		if(localidad.getEstado() == reservado) return true;
+		if(localidad.getEstado() == RESERVADO) return true;
 		return false;
 	}
 

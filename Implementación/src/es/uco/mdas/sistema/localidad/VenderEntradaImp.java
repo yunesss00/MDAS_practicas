@@ -6,12 +6,12 @@ import es.uco.mdas.negocio.clubDeportivo.datos.LocalidadDatosImp;
 public class VenderEntradaImp implements VenderEntrada {
 	
 	LocalidadDatosImp localidadDatos;
-	String reservado = "RESERVADO";
+	private static final String RESERVADO = "RESERVADO";
 	
 	@Override
 	public void actualizarLocalidad(Long idLocalidad) {
 		ObjetoLocalidad localidad = localidadDatos.buscar(idLocalidad);
-		localidad.setEstado(reservado);	
+		localidad.setEstado(RESERVADO);	
 	}
 
 	@Override

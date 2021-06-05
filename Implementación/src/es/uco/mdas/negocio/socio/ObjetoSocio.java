@@ -11,7 +11,8 @@ public class ObjetoSocio {
 	private int antiguedadSocio;
 	private TipoCarnet tipoCarnet;
 	
-	public ObjetoSocio(Long idSocio, String nombreSocio, String apellidosSocio, Date fechaNacimientoSocio, int antiguedadSocio, TipoCarnet tipoCarnet) {
+	public ObjetoSocio(Long idSocio, String nombreSocio, String apellidosSocio,
+			Date fechaNacimientoSocio, int antiguedadSocio, TipoCarnet tipoCarnet) {
 		this.nombreSocio = nombreSocio;
 		this.apellidosSocio = apellidosSocio;
 		this.fechaNacimientoSocio = fechaNacimientoSocio;
@@ -19,6 +20,12 @@ public class ObjetoSocio {
 		this.tipoCarnet = tipoCarnet;
 	}
 
+	public ObjetoSocio(String nombreSocio, String apellidosSocio,
+			Date fechaNacimientoSocio) {
+		this.nombreSocio = nombreSocio;
+		this.apellidosSocio = apellidosSocio;
+		this.fechaNacimientoSocio = fechaNacimientoSocio;
+	}
 	public Long getIdSocio() {
 		return idSocio;
 	}
