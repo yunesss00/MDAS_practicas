@@ -8,7 +8,7 @@ import java.util.Date;
 public class SocioCompromisarioFactoria implements IBuscarSocio, IComprobarTipoCarnet, IRegistrarSocio {
 	
 	@Override
-	public void setDatosSocio(Socio socio) {
+	public void setDatosSocio(ObjetoSocio socio) {
 		
 		SocioCompromisario socioCompromisario = new SocioCompromisario(socio.getIdSocio(), socio.getNombreSocio(), socio.getApellidosSocio(),
 		socio.getFechaNacimientoSocio(), socio.getAntiguedadSocio());
@@ -18,23 +18,23 @@ public class SocioCompromisarioFactoria implements IBuscarSocio, IComprobarTipoC
 	}
 
 	@Override
-	public boolean comprobarValidezDatos(Socio socio) {
+	public boolean comprobarValidezDatos(ObjetoSocio socio) {
 		
 		
 		return false;
 	}
 
 	@Override
-	public Socio setTipoSocio(String tipoSocio, Socio socio) {
+	public ObjetoSocio setTipoSocio(String tipoSocio, ObjetoSocio socio) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public long comprobarEdadSocio(Socio socio) {
+	public long comprobarEdadSocio(ObjetoSocio socio) {
 		
 		comprobarExistenciaSocio(socio.getIdSocio());
-		Socio socioAuxiliar = mostrarDatosSocio(socio.getIdSocio());
+		ObjetoSocio socioAuxiliar = mostrarDatosSocio(socio.getIdSocio());
 		
 	    LocalDate hoy = LocalDate.now();
 	    LocalDate nacimiento = socioAuxiliar.getFechaNacimientoSocio().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -45,7 +45,7 @@ public class SocioCompromisarioFactoria implements IBuscarSocio, IComprobarTipoC
 		
 
 	@Override
-	public String notificarTipoCarnet(Socio socio) {
+	public String notificarTipoCarnet(ObjetoSocio socio) {
 		
 		
 		return null;
@@ -58,7 +58,7 @@ public class SocioCompromisarioFactoria implements IBuscarSocio, IComprobarTipoC
 	}
 
 	@Override
-	public Socio mostrarDatosSocio(Long idSocio) {
+	public ObjetoSocio mostrarDatosSocio(Long idSocio) {
 		// TODO Auto-generated method stub
 		return null;
 	}

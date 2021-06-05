@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import es.uco.mdas.datos.PropertiesFile;
-import es.uco.mdas.negocio.socio.Abono;
+import es.uco.mdas.negocio.socio.ObjetoAbono;
 
 public class AbonoDatosImp implements AbonoDatos{
 
@@ -28,7 +28,7 @@ public class AbonoDatosImp implements AbonoDatos{
     }
 
     @Override
-    public boolean insertar(Abono abono) {
+    public boolean insertar(ObjetoAbono abono) {
         Boolean resultado = true;
 
         if (comprobarDisponiblidadAbono(abono.getDeporteAbono())) {
@@ -138,7 +138,7 @@ public class AbonoDatosImp implements AbonoDatos{
 		} catch(IOException e) {}
     }*/
 
-    private boolean comprobarExistenciaAbono(Abono abono) {
+    private boolean comprobarExistenciaAbono(ObjetoAbono abono) {
         File f;
 		f= new File(nombreFicheroAbonos);
 		
@@ -164,7 +164,7 @@ public class AbonoDatosImp implements AbonoDatos{
 		return false;
     }
 
-    private boolean comprobarDatosAbono(Abono abono) {
+    private boolean comprobarDatosAbono(ObjetoAbono abono) {
         if (tiposAbono.contains(abono.getTipoAbono()) && 
 				deportesAbono.contains(abono.getDeporteAbono())) return true;
 		System.out.println("El deporte o el tipo de abono son incorrectos.");
@@ -209,7 +209,7 @@ public class AbonoDatosImp implements AbonoDatos{
 
 
     @Override
-    public boolean borrar(Abono abono) {
+    public boolean borrar(ObjetoAbono abono) {
         Boolean resultado = true;
         String nombreFichero = "abonos" + abono.getDeporteAbono() + ".txt";
         File ficheroLectura = new File(nombreFichero);
@@ -253,7 +253,7 @@ public class AbonoDatosImp implements AbonoDatos{
         return resultado; 
     }
 
-    private void borrarAbonoSocio(Abono abono) {
+    private void borrarAbonoSocio(ObjetoAbono abono) {
 		String nombreFichero = Long.toString(abono.getIdAbono()) + ".txt";
 		File ficheroLectura = new File(nombreFichero);
         File ficheroEscritura = new File("temporal.txt");
@@ -288,13 +288,13 @@ public class AbonoDatosImp implements AbonoDatos{
     }
 
     @Override
-    public Abono buscar(Long idAbono) {
+    public ObjetoAbono buscar(Long idAbono) {
 
         return null;
     }
 
     @Override
-    public boolean modificar(Abono abono) {
+    public boolean modificar(ObjetoAbono abono) {
         return false;
         // TODO Auto-generated method stub
     }

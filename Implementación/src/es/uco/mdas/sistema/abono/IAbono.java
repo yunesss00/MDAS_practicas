@@ -1,13 +1,13 @@
 package es.uco.mdas.sistema.abono;
 
-import es.uco.mdas.negocio.socio.Abono;
+import es.uco.mdas.negocio.socio.ObjetoAbono;
 
 public interface IAbono {
     /**
      * Da de alta un abono
      * @param abono
      */
-    public boolean darDeAltaAbono(Abono abono);
+    public boolean darDeAltaAbono(ObjetoAbono abono);
 
     /**
      * Elimina un abono
@@ -26,5 +26,5 @@ public interface IAbono {
      * @param idAbono
      * @return
      */
-    public Abono obtenerInformacionAbono(Long idAbono);
+    public ObjetoAbono obtenerInformacionAbono(Long idAbono);
 }

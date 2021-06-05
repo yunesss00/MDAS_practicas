@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 
 
-public class Abono implements Serializable{
+public class ObjetoAbono implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private Long idAbono;
@@ -17,9 +17,9 @@ public class Abono implements Serializable{
 	private int localidad = 0;
 
 	
-	public Abono() {}
+	public ObjetoAbono() {}
 	
-	public Abono(String deporteAbono, String tipoAbono, Long idSocio) {
+	public ObjetoAbono(String deporteAbono, String tipoAbono, Long idSocio) {
 		this.deporteAbono = deporteAbono;
 		this.tipoAbono = tipoAbono;
 		this.localidad = 0;

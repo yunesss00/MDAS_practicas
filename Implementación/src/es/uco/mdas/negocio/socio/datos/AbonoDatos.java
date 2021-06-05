@@ -1,7 +1,7 @@
 package es.uco.mdas.negocio.socio.datos;
 
-import es.uco.mdas.negocio.socio.Abono;
+import es.uco.mdas.negocio.socio.ObjetoAbono;
 
-public interface AbonoDatos extends Datos<Abono>{
+public interface AbonoDatos extends Datos<ObjetoAbono>{
     
 }

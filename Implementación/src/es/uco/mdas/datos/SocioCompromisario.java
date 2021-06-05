@@ -2,7 +2,7 @@ package es.uco.mdas.datos;
 
 import java.util.Date;
 
-public class SocioCompromisario extends Socio {
+public class SocioCompromisario extends ObjetoSocio {
 
 	private Long voto;
 	

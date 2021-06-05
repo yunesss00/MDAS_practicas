@@ -1,13 +1,13 @@
-package es.uco.mdas.sistema.localidad;
+package es.uco.mdas.negocio.clubDeportivo;
 
 import java.sql.Time;
 import java.util.Date;
 
-public class DetallesEntrada {
+public class ObjetoEntrada {
 
 
 	private long idEntrada;
-	private DetallesLocalidad localidad;
+	private ObjetoLocalidad localidad;
 	private Date fechaPartido;  
 	private Time horaPartido;
 	private String equipo;
@@ -24,7 +24,7 @@ public class DetallesEntrada {
 	 * @param precio
 	 */
 	
-	public DetallesEntrada(long idEntrada, DetallesLocalidad localidad, Date fechaPartido, Time horaPartido, String equipo, float precio ) {
+	public ObjetoEntrada(long idEntrada, ObjetoLocalidad localidad, Date fechaPartido, Time horaPartido, String equipo, float precio ) {
 		this.idEntrada = idEntrada;
 		this.localidad = localidad;
 		this.fechaPartido = fechaPartido;  
@@ -43,11 +43,11 @@ public class DetallesEntrada {
 		this.idEntrada = idEntrada;
 	}
 
-	public DetallesLocalidad getLocalidad() {
+	public ObjetoLocalidad getLocalidad() {
 		return localidad;
 	}
 
-	public void setLocalidad(DetallesLocalidad localidad) {
+	public void setLocalidad(ObjetoLocalidad localidad) {
 		this.localidad = localidad;
 	}
 

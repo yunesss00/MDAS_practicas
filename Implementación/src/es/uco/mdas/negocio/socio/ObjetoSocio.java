@@ -2,7 +2,7 @@ package es.uco.mdas.negocio.socio;
 
 import java.util.Date;
 
-public class Socio {
+public class ObjetoSocio {
 
 	private Long idSocio;
 	private String nombreSocio;
@@ -11,7 +11,7 @@ public class Socio {
 	private int antiguedadSocio;
 	private TipoCarnet tipoCarnet;
 	
-	public Socio(Long idSocio, String nombreSocio, String apellidosSocio, Date fechaNacimientoSocio, int antiguedadSocio, TipoCarnet tipoCarnet) {
+	public ObjetoSocio(Long idSocio, String nombreSocio, String apellidosSocio, Date fechaNacimientoSocio, int antiguedadSocio, TipoCarnet tipoCarnet) {
 		this.nombreSocio = nombreSocio;
 		this.apellidosSocio = apellidosSocio;
 		this.fechaNacimientoSocio = fechaNacimientoSocio;

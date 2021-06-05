@@ -4,6 +4,6 @@ public interface IBuscarSocio {
 	
 	public boolean comprobarExistenciaSocio(Long idSocio);
 	
-	public Socio mostrarDatosSocio(Long idSocio);
+	public ObjetoSocio mostrarDatosSocio(Long idSocio);
 
 }

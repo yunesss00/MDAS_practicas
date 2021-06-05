@@ -2,23 +2,23 @@ package es.uco.mdas.negocio.socio;
 
 public interface SocioMgt {
     
-    public boolean darDeAltaAbono(Abono abono);
+    public boolean darDeAltaAbono(ObjetoAbono abono);
 
     public boolean darDeBajaAbono(Long idAbono);
 
     public boolean renovarAbono(Long idAbono);
 
-    public Abono obtenerInformacionAbono(Long idAbono);
+    public ObjetoAbono obtenerInformacionAbono(Long idAbono);
     
-    public boolean setDatosSocio(Socio socio);
+    public boolean setDatosSocio(ObjetoSocio socio);
 	
-	public boolean comprobarValidezDatos(Socio socio);
+	public boolean comprobarValidezDatos(ObjetoSocio socio);
 	
-	public Socio setTipoSocio(String tipoSocio, Socio socio);
+	public ObjetoSocio setTipoSocio(String tipoSocio, ObjetoSocio socio);
 	
 	public boolean comprobarExistenciaSocio(Long idSocio);
 	
-	public Socio mostrarDatosSocio(Long idSocio);
+	public ObjetoSocio mostrarDatosSocio(Long idSocio);
 	
 	public long comprobarEdadSocio(Long idSocio);
 	

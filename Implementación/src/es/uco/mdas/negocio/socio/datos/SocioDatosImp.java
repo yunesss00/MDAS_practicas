@@ -1,31 +1,31 @@
 package es.uco.mdas.negocio.socio.datos;
 
-import es.uco.mdas.negocio.socio.Socio;
+import es.uco.mdas.negocio.socio.ObjetoSocio;
 
 public class SocioDatosImp implements SocioDatos{
 
     @Override
-    public boolean insertar(Socio socio) {
+    public boolean insertar(ObjetoSocio socio) {
         return false;
         // TODO Auto-generated method stub
         
     }
 
     @Override
-    public boolean borrar(Socio socio) {
+    public boolean borrar(ObjetoSocio socio) {
         return false;
         // TODO Auto-generated method stub
         
     }
     
     @Override
-    public Socio buscar(Long idSocio) {
+    public ObjetoSocio buscar(Long idSocio) {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public boolean modificar(Socio socio) {
+    public boolean modificar(ObjetoSocio socio) {
         return false;
         // TODO Auto-generated method stub
         

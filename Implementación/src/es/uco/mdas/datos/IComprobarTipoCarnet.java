@@ -6,9 +6,9 @@ package es.uco.mdas.datos;
  */
 public interface IComprobarTipoCarnet {
 	
-	public long comprobarEdadSocio(Socio socio);
+	public long comprobarEdadSocio(ObjetoSocio socio);
 	
-	public String notificarTipoCarnet(Socio socio);
+	public String notificarTipoCarnet(ObjetoSocio socio);
 	
 
 }

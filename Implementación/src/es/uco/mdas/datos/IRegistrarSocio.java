@@ -6,10 +6,10 @@ package es.uco.mdas.datos;
  */
 public interface IRegistrarSocio {
 	
-	public void setDatosSocio(Socio socio);
+	public void setDatosSocio(ObjetoSocio socio);
 	
-	public boolean comprobarValidezDatos(Socio socio);
+	public boolean comprobarValidezDatos(ObjetoSocio socio);
 	
-	public Socio setTipoSocio(String tipoSocio, Socio socio);
+	public ObjetoSocio setTipoSocio(String tipoSocio, ObjetoSocio socio);
 
 }

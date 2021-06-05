@@ -13,38 +13,38 @@ import java.io.PrintWriter;
 import java.util.Date;
 
 
-public class ComponenteSocios extends Socio implements IBuscarSocio, IComprobarTipoCarnet, IRegistrarSocio {
+public class ComponenteSocios extends ObjetoSocio implements IBuscarSocio, IComprobarTipoCarnet, IRegistrarSocio {
 
 	public ComponenteSocios(Long idSocio, String nombreSocio, String apellidosSocio, Date fechaNacimientoSocio, int antiguedadSocio) {
 		super(idSocio, nombreSocio, apellidosSocio, fechaNacimientoSocio, antiguedadSocio);
 	}
 
 	@Override
-	public void setDatosSocio(Socio socio) {
+	public void setDatosSocio(ObjetoSocio socio) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public boolean comprobarValidezDatos(Socio socio) {
+	public boolean comprobarValidezDatos(ObjetoSocio socio) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public Socio setTipoSocio(String tipoSocio, Socio socio) {
+	public ObjetoSocio setTipoSocio(String tipoSocio, ObjetoSocio socio) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public long comprobarEdadSocio(Socio socio) {
+	public long comprobarEdadSocio(ObjetoSocio socio) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public String notificarTipoCarnet(Socio socio) {
+	public String notificarTipoCarnet(ObjetoSocio socio) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -56,7 +56,7 @@ public class ComponenteSocios extends Socio implements IBuscarSocio, IComprobarT
 	}
 
 	@Override
-	public Socio mostrarDatosSocio(Long idSocio) {
+	public ObjetoSocio mostrarDatosSocio(Long idSocio) {
 		// TODO Auto-generated method stub
 		return null;
 	}

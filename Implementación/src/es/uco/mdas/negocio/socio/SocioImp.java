@@ -5,8 +5,8 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 
-import es.uco.mdas.negocio.socio.Socio;
-import es.uco.mdas.negocio.socio.Abono;
+import es.uco.mdas.negocio.socio.ObjetoSocio;
+import es.uco.mdas.negocio.socio.ObjetoAbono;
 import es.uco.mdas.negocio.socio.SocioMgt;
 import es.uco.mdas.negocio.socio.datos.AbonoDatosImp;
 import es.uco.mdas.negocio.socio.datos.AbonoDatos;
@@ -24,8 +24,8 @@ public class SocioImp implements SocioMgt{
     }
 
     @Override
-    public boolean darDeAltaAbono(Abono abono) {
-        Abono informacionAbono = obtenerInformacionAbono(abono.getIdAbono());
+    public boolean darDeAltaAbono(ObjetoAbono abono) {
+        ObjetoAbono informacionAbono = obtenerInformacionAbono(abono.getIdAbono());
         if (informacionAbono == null) return abonoDatos.insertar(abono);
         return false;
         
@@ -34,7 +34,7 @@ public class SocioImp implements SocioMgt{
 
     @Override
     public boolean darDeBajaAbono(Long idAbono) {
-        Abono informacionAbono = obtenerInformacionAbono(idAbono);
+        ObjetoAbono informacionAbono = obtenerInformacionAbono(idAbono);
         if(informacionAbono == null) return false;
         return abonoDatos.borrar(informacionAbono);
     }
@@ -46,24 +46,24 @@ public class SocioImp implements SocioMgt{
     }
 
     @Override
-    public Abono obtenerInformacionAbono(Long idAbono) {
-        Abono informacionAbono = abonoDatos.buscar(idAbono);
+    public ObjetoAbono obtenerInformacionAbono(Long idAbono) {
+        ObjetoAbono informacionAbono = abonoDatos.buscar(idAbono);
         return informacionAbono;
     }
 
 	@Override
-	public boolean setDatosSocio(Socio socio) {
+	public boolean setDatosSocio(ObjetoSocio socio) {
 		return socioDatos.insertar(socio);		
 	}
 
 	@Override
-	public boolean comprobarValidezDatos(Socio socio) {
+	public boolean comprobarValidezDatos(ObjetoSocio socio) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public Socio setTipoSocio(String tipoSocio, Socio socio) {
+	public ObjetoSocio setTipoSocio(String tipoSocio, ObjetoSocio socio) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -75,7 +75,7 @@ public class SocioImp implements SocioMgt{
 	}
 
 	@Override
-	public Socio mostrarDatosSocio(Long idSocio) {
+	public ObjetoSocio mostrarDatosSocio(Long idSocio) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -83,7 +83,7 @@ public class SocioImp implements SocioMgt{
 	@Override
 	public long comprobarEdadSocio(Long idSocio) {
 		if(!comprobarExistenciaSocio(idSocio)) return 0;
-		Socio socio = mostrarDatosSocio(idSocio);
+		ObjetoSocio socio = mostrarDatosSocio(idSocio);
 		
 	    LocalDate hoy = LocalDate.now();
 	    LocalDate nacimiento = socio.getFechaNacimientoSocio().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();

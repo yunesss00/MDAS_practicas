@@ -1,6 +1,6 @@
 package es.uco.mdas.sistema.abono;
 
-import es.uco.mdas.negocio.socio.Abono;
+import es.uco.mdas.negocio.socio.ObjetoAbono;
 import es.uco.mdas.negocio.socio.SocioMgt;
 import es.uco.mdas.negocio.socio.SocioImp;
 import es.uco.mdas.negocio.socio.datos.AbonoDatosImp;
@@ -16,7 +16,7 @@ public class AbonoImp implements IAbono{
     }
 
     @Override
-    public boolean darDeAltaAbono(Abono abono) {
+    public boolean darDeAltaAbono(ObjetoAbono abono) {
         return gestorSocio.darDeAltaAbono(abono);
         
     }
@@ -33,8 +33,8 @@ public class AbonoImp implements IAbono{
     }
 
     @Override
-    public Abono obtenerInformacionAbono(Long idAbono) {
-        Abono abono = gestorSocio.obtenerInformacionAbono(idAbono);
+    public ObjetoAbono obtenerInformacionAbono(Long idAbono) {
+        ObjetoAbono abono = gestorSocio.obtenerInformacionAbono(idAbono);
         return abono;
     }
     

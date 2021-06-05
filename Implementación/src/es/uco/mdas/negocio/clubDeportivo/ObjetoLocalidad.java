@@ -1,7 +1,7 @@
-package es.uco.mdas.sistema.localidad;
+package es.uco.mdas.negocio.clubDeportivo;
 
 
-public class DetallesLocalidad {
+public class ObjetoLocalidad {
 
 	private long idLocalidad;
 	private long idAbono;
@@ -22,7 +22,7 @@ public class DetallesLocalidad {
 	 * @param 
 	 * @param 
 	 */
-	public DetallesLocalidad(long idLocalidad, long idAbono, int fila, String sector, String zona, String estado) {
+	public ObjetoLocalidad(long idLocalidad, long idAbono, int fila, String sector, String zona, String estado) {
 		this.idLocalidad = idLocalidad;
 		this.idAbono = idAbono;
 		this.zona = zona;

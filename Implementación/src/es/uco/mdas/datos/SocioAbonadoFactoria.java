@@ -5,31 +5,31 @@ import java.util.Date;
 public class SocioAbonadoFactoria implements IBuscarSocio, IComprobarTipoCarnet, IRegistrarSocio{
 
 	@Override
-	public void setDatosSocio(Socio socio) {
+	public void setDatosSocio(ObjetoSocio socio) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public boolean comprobarValidezDatos(Socio socio) {
+	public boolean comprobarValidezDatos(ObjetoSocio socio) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public Socio setTipoSocio(String tipoSocio, Socio socio) {
+	public ObjetoSocio setTipoSocio(String tipoSocio, ObjetoSocio socio) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public long comprobarEdadSocio(Socio socio) {
+	public long comprobarEdadSocio(ObjetoSocio socio) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public String notificarTipoCarnet(Socio socio) {
+	public String notificarTipoCarnet(ObjetoSocio socio) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -41,7 +41,7 @@ public class SocioAbonadoFactoria implements IBuscarSocio, IComprobarTipoCarnet,
 	}
 
 	@Override
-	public Socio mostrarDatosSocio(Long idSocio) {
+	public ObjetoSocio mostrarDatosSocio(Long idSocio) {
 		// TODO Auto-generated method stub
 		return null;
 	}
