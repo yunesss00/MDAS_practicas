@@ -1,15 +1,15 @@
-package es.uco.mdas.negocio;
+package es.uco.mdas.negocio.socio;
 
 import java.net.SocketOption;
 
 import es.uco.mdas.negocio.socio.Abono;
-import es.uco.mdas.negocio.socio.ISocio;
+import es.uco.mdas.negocio.socio.SocioMgt;
 import es.uco.mdas.negocio.socio.datos.AbonoDatosImp;
 import es.uco.mdas.negocio.socio.datos.IAbonoDatos;
 import es.uco.mdas.negocio.socio.datos.ISocioDatos;
 import es.uco.mdas.negocio.socio.datos.SocioDatosImp;
 
-public class SocioImp implements ISocio{
+public class SocioImp implements SocioMgt{
 
     private IAbonoDatos abonoDatos;
     private ISocioDatos socioDatos;
@@ -21,10 +21,11 @@ public class SocioImp implements ISocio{
 
     @Override
     public boolean darDeAltaAbono(Abono abono) {
-        if (abonoDatos.consutarPorID(abono.getIdAbono()) == null) 
+        if (abonoDatos.buscar(abono.getIdAbono()) == null) 
         {
             
         }
+		return false;
         
     }
 
@@ -45,5 +46,47 @@ public class SocioImp implements ISocio{
         // TODO Auto-generated method stub
         return null;
     }
+
+	@Override
+	public void setDatosSocio(Socio socio) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean comprobarValidezDatos(Socio socio) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Socio setTipoSocio(String tipoSocio, Socio socio) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean comprobarExistenciaSocio(Long idSocio) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Socio mostrarDatosSocio(Long idSocio) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long comprobarEdadSocio(Socio socio) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String notificarTipoCarnet(Socio socio) {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
 }

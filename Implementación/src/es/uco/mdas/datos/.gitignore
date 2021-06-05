@@ -4,3 +4,11 @@
 /PropertiesFile.class
 /Socio.class
 /Localidad.class
+/ComponenteSocios.class
+/IBuscarSocio.class
+/IComprobarTipoCarnet.class
+/IRegistrarSocio.class
+/SocioAbonado.class
+/SocioAbonadoFactoria.class
+/SocioCompromisario.class
+/SocioCompromisarioFactoria.class

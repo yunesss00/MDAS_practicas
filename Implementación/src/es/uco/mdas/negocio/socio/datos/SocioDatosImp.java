@@ -5,7 +5,7 @@ import es.uco.mdas.negocio.socio.Socio;
 public class SocioDatosImp implements ISocioDatos{
 
     @Override
-    public Socio consutarPorID(String idAbono) {
+    public Socio buscar(Long idAbono) {
         // TODO Auto-generated method stub
         return null;
     }
@@ -23,7 +23,7 @@ public class SocioDatosImp implements ISocioDatos{
     }
 
     @Override
-    public void borrar(String idAbono) {
+    public void borrar(Long idAbono) {
         // TODO Auto-generated method stub
         
     }

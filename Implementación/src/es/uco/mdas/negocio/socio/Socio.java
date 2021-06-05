@@ -9,12 +9,14 @@ public class Socio {
 	private String apellidosSocio;
 	private Date fechaNacimientoSocio;
 	private int antiguedadSocio;
+	private TipoCarnet tipoCarnet;
 	
-	public Socio(Long idSocio, String nombreSocio, String apellidosSocio, Date fechaNacimientoSocio, int antiguedadSocio) {
+	public Socio(Long idSocio, String nombreSocio, String apellidosSocio, Date fechaNacimientoSocio, int antiguedadSocio, TipoCarnet tipoCarnet) {
 		this.nombreSocio = nombreSocio;
 		this.apellidosSocio = apellidosSocio;
 		this.fechaNacimientoSocio = fechaNacimientoSocio;
 		this.antiguedadSocio = antiguedadSocio;
+		this.tipoCarnet = tipoCarnet;
 	}
 
 	public Long getIdSocio() {
@@ -37,6 +39,10 @@ public class Socio {
 		return antiguedadSocio;
 	}
 	
+	public TipoCarnet getTipoCarnet() {
+		return tipoCarnet;
+	}
+	
 	public void setIdSocio(Long idSocio) {
 		this.idSocio = idSocio;
 	}
@@ -55,6 +61,10 @@ public class Socio {
 	
 	public void setAntiguedadSocio(int antiguedadSocio) {
 		this.antiguedadSocio = antiguedadSocio;
+	}
+	
+	public void setTipoCarnet(TipoCarnet tipoCarnet) {
+		this.tipoCarnet = tipoCarnet;
 	}
 }
 
