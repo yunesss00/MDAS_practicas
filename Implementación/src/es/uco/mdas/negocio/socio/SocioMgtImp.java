@@ -30,7 +30,7 @@ public class SocioMgtImp implements SocioMgt{
     public boolean darDeBajaAbono(Long idAbono) {
         ObjetoAbono informacionAbono = obtenerInformacionAbono(idAbono);
         if(informacionAbono == null) return false;
-        return abonoDatos.borrar(informacionAbono);
+        return abonoDatos.borrar(idAbono);
     }
 
     @Override

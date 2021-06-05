@@ -49,7 +49,7 @@ public class SocioDatosImp implements SocioDatos{
     }
 
     @Override
-    public boolean borrar(ObjetoSocio socio) {
+    public boolean borrar(Long idSocio) {
         return false;
         // TODO Auto-generated method stub
         

@@ -1,21 +1,16 @@
 package es.uco.mdas.negocio.socio.datos;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
 import java.util.Properties;
 
-import es.uco.mdas.datos.PropertiesFile;
 import es.uco.mdas.negocio.socio.ObjetoAbono;
 
 public class AbonoDatosImp implements AbonoDatos{
@@ -36,6 +31,7 @@ public class AbonoDatosImp implements AbonoDatos{
     private static final String FICHEROPROPIEDADES = "ficheros.properties";
 	private static final String NOMBREFICHERO = "ficheroAbonos";
     private static final String FICHEROTEMPORAL = "temporal.bin";
+    //private static final String FICHEROABONOSDISPONIBLES = "abonosDispo";
 
     @Override
     public boolean insertar(ObjetoAbono abono) {
@@ -68,7 +64,7 @@ public class AbonoDatosImp implements AbonoDatos{
     }
 
     @Override
-    public boolean borrar(ObjetoAbono objeto) {
+    public boolean borrar(Long idSocio) {
         // TODO Auto-generated method stub
         return false;
     }
@@ -235,7 +231,7 @@ public class AbonoDatosImp implements AbonoDatos{
         return resultado;
     }
 
-
+    
 
 
 
@@ -289,45 +285,7 @@ public class AbonoDatosImp implements AbonoDatos{
         
     }
 
-    private void modificarAbonosDisponibles(String deporteAbono, String operacion) {
-        File ficheroLectura;
-		File ficheroEscritura;
-		ficheroLectura = new File(nombreFicheroAbonosDisponibles);
-		ficheroEscritura = new File("temporal.txt");
-		
-		try {
-			BufferedReader reader = new BufferedReader(new FileReader(ficheroLectura));
-			BufferedWriter writer = new BufferedWriter(new FileWriter(ficheroEscritura));
-
-			String linea;
-			String abonosDisponibles;
-			int nuevosAbonosDisponibles;
-			String[] partes;
-			while((linea = reader.readLine()) != null) 
-			{
-				if(linea.contains(deporteAbono)) 
-				{
-					partes = linea.split("-");
-					abonosDisponibles = partes[1];
-					if (operacion == "insertar") 
-                    {
-                        nuevosAbonosDisponibles = Integer.parseInt(abonosDisponibles) - 1;
-                    }
-                    else
-                    {
-                        nuevosAbonosDisponibles = Integer.parseInt(abonosDisponibles) + 1;
-                    }
-					linea = deporteAbono + "-" + nuevosAbonosDisponibles + "\n";
-					writer.write(linea);
-				}
-			}
-			reader.close();
-			writer.close();
-			ficheroLectura.delete();
-            ficheroEscritura.renameTo(ficheroLectura);
-			
-		}catch(IOException e) {}
-    }
+    
 
     /*private void generarAbono(Abono abono) {
         File f;
@@ -425,6 +383,45 @@ public class AbonoDatosImp implements AbonoDatos{
 		return true;
     }
 
+    private void modificarAbonosDisponibles(String deporteAbono, String operacion) {
+        File ficheroLectura;
+		File ficheroEscritura;
+		ficheroLectura = new File(nombreFicheroAbonosDisponibles);
+		ficheroEscritura = new File("temporal.txt");
+		
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(ficheroLectura));
+			BufferedWriter writer = new BufferedWriter(new FileWriter(ficheroEscritura));
+
+			String linea;
+			String abonosDisponibles;
+			int nuevosAbonosDisponibles;
+			String[] partes;
+			while((linea = reader.readLine()) != null) 
+			{
+				if(linea.contains(deporteAbono)) 
+				{
+					partes = linea.split("-");
+					abonosDisponibles = partes[1];
+					if (operacion == "insertar") 
+                    {
+                        nuevosAbonosDisponibles = Integer.parseInt(abonosDisponibles) - 1;
+                    }
+                    else
+                    {
+                        nuevosAbonosDisponibles = Integer.parseInt(abonosDisponibles) + 1;
+                    }
+					linea = deporteAbono + "-" + nuevosAbonosDisponibles + "\n";
+					writer.write(linea);
+				}
+			}
+			reader.close();
+			writer.close();
+			ficheroLectura.delete();
+            ficheroEscritura.renameTo(ficheroLectura);
+			
+		}catch(IOException e) {}
+    }
 
 
     @Override
