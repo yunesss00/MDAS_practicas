@@ -1,7 +1,11 @@
 package es.uco.mdas.negocio.socio;
 
 import java.net.SocketOption;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 
+import es.uco.mdas.negocio.socio.Socio;
 import es.uco.mdas.negocio.socio.Abono;
 import es.uco.mdas.negocio.socio.SocioMgt;
 import es.uco.mdas.negocio.socio.datos.AbonoDatosImp;
@@ -46,9 +50,8 @@ public class SocioImp implements SocioMgt{
     }
 
 	@Override
-	public void setDatosSocio(Socio socio) {
-		// TODO Auto-generated method stub
-		
+	public boolean setDatosSocio(Socio socio) {
+		return socioDatos.insertar(socio);		
 	}
 
 	@Override
@@ -76,15 +79,35 @@ public class SocioImp implements SocioMgt{
 	}
 
 	@Override
-	public long comprobarEdadSocio(Socio socio) {
-		// TODO Auto-generated method stub
-		return 0;
+	public long comprobarEdadSocio(Long idSocio) {
+		if(!comprobarExistenciaSocio(idSocio)) return 0;
+		Socio socio = mostrarDatosSocio(idSocio);
+		
+	    LocalDate hoy = LocalDate.now();
+	    LocalDate nacimiento = socio.getFechaNacimientoSocio().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+	    long edad = ChronoUnit.YEARS.between(nacimiento, hoy);
+	        
+	    return edad;
 	}
 
 	@Override
-	public String notificarTipoCarnet(Socio socio) {
-		// TODO Auto-generated method stub
-		return null;
+	public TipoCarnet notificarTipoCarnet(long edad) {
+		long edadSocioAdulto = 18;
+		long edadSocioOro = 65;
+		TipoCarnet tipoCarnet;
+		
+		if(edad >= edadSocioOro) {
+			tipoCarnet = TipoCarnet.Oro;
+		}
+		else {
+			if(edad >= edadSocioAdulto) {
+				tipoCarnet = TipoCarnet.Adulto;
+			}
+			else {
+				tipoCarnet = TipoCarnet.Infantil;
+			}
+		}
+		return tipoCarnet;
 	}
     
 }

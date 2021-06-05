@@ -10,7 +10,7 @@ public interface SocioMgt {
 
     public Abono obtenerInformacionAbono(Long idAbono);
     
-    public void setDatosSocio(Socio socio);
+    public boolean setDatosSocio(Socio socio);
 	
 	public boolean comprobarValidezDatos(Socio socio);
 	
@@ -20,7 +20,8 @@ public interface SocioMgt {
 	
 	public Socio mostrarDatosSocio(Long idSocio);
 	
-	public long comprobarEdadSocio(Socio socio);
+	public long comprobarEdadSocio(Long idSocio);
 	
-	public String notificarTipoCarnet(Socio socio);
+	public TipoCarnet notificarTipoCarnet(long edad);
+
 }
