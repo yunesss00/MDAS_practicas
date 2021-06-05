@@ -289,10 +289,38 @@ public class AbonoDatosImp implements AbonoDatos{
 
     @Override
     public ObjetoAbono buscar(Long idAbono) {
+        File f;
+        ObjetoAbono abono = new ObjetoAbono();
+        f = new File(nombreFicheroAbonos);
 
-        return null;
+        try {
+
+            BufferedReader reader = new BufferedReader(new FileReader(nombreFicheroAbonos));
+			String linea;
+            
+            while ((linea = reader.readLine()) != null) 
+            {   
+                if (linea.trim().equals(Long.toString(idAbono))) 
+                {
+                    abono.setIdAbono(idAbono);
+                    linea = reader.readLine();
+                    abono.setIdSocio(Long.parseLong(linea));
+                    linea = reader.readLine();
+                    abono.setDeporteAbono(linea);
+                    linea = reader.readLine();
+                    abono.setTipoAbono(linea);
+                    linea = reader.readLine();
+                    abono.leerFechaExpedicionAbono(linea);
+                    linea = reader.readLine();
+                    abono.leerLocalidadAbono(linea);
+                }
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return abono;
     }
-
     @Override
     public boolean modificar(ObjetoAbono abono) {
         return false;

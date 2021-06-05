@@ -63,6 +63,18 @@ public class ObjetoAbono implements Serializable{
 		this.idAbono = idAbono;
 	}
 	
+	public void setDeporteAbono(String deporteAbono) {
+		this.deporteAbono = deporteAbono;
+	}
+	
+	public void setLocalidad() {
+		this.localidad = localidad++;
+	}
+	
+	public void setTipoAbono(String tipoAbono) {
+		this.tipoAbono = tipoAbono;
+	}
+	
 	public void setFechaExpedicionAbono() {
 		String mesDia= "-09-16";
 		LocalDate fechaExpedicionAbono = null;
@@ -76,17 +88,20 @@ public class ObjetoAbono implements Serializable{
         aux = Integer.toString(anyoExpedicion) + mesDia;
         
         fechaExpedicionAbono = LocalDate.parse(aux);
-		this.fechaExpedicionAbono = fechaExpedicionAbono;	}
-	
-	public void setDeporteAbono(String deporteAbono) {
-		this.deporteAbono = deporteAbono;
+		this.fechaExpedicionAbono = fechaExpedicionAbono;	
 	}
-	
-	public void setLocalidad() {
-		this.localidad = localidad++;
+
+	public void leerLocalidadAbono(String aux){
+		int localidad = Integer.parseInt(aux);
+		this.localidad = localidad;
 	}
-	
-	public void setTipoAbono(String tipoAbono) {
-		this.tipoAbono = tipoAbono;
+	/**
+	 * Simplemente se usa para leer del fichero y crear la clase abono
+	 * @param aux
+	 */
+	public void leerFechaExpedicionAbono(String aux){
+		LocalDate fechaExpedicion;
+		fechaExpedicion = LocalDate.parse(aux);
+		this.fechaExpedicionAbono = fechaExpedicion;
 	}
 }
