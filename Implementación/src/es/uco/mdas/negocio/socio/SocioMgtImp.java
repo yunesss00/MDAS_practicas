@@ -41,8 +41,9 @@ public class SocioMgtImp implements SocioMgt{
 
     @Override
     public boolean renovarAbono(Long idAbono) {
-        // TODO Auto-generated method stub
-        return false;
+        ObjetoAbono informacionAbono = obtenerInformacionAbono(idAbono);
+		if (informacionAbono == null) return false; 
+        return abonoDatos.modificar(informacionAbono);
     }
 
     @Override

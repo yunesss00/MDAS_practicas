@@ -2,19 +2,25 @@ package es.uco.mdas.negocio.socio.datos;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.EOFException;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
+import java.util.Properties;
 
 import es.uco.mdas.datos.PropertiesFile;
 import es.uco.mdas.negocio.socio.ObjetoAbono;
 
 public class AbonoDatosImp implements AbonoDatos{
 
-    private PropertiesFile p = new PropertiesFile();
+    /*private PropertiesFile p = new PropertiesFile();
     private String nombreFicheroAbonosDisponibles;
     private String nombreFicheroAbonos;
 	private String tiposAbono;
@@ -25,9 +31,222 @@ public class AbonoDatosImp implements AbonoDatos{
         nombreFicheroAbonos = p.getFicheroAbonos();
 		tiposAbono = p.getTiposAbono();
 		deportesAbono = p.getDeportesAbono();
+    }*/
+
+    private static final String FICHEROPROPIEDADES = "ficheros.properties";
+	private static final String NOMBREFICHERO = "ficheroAbonos";
+    private static final String FICHEROTEMPORAL = "temporal.bin";
+
+    @Override
+    public boolean insertar(ObjetoAbono abono) {
+        Properties propiedades = new Properties();
+        FileReader ficheroPropiedades;
+        String nombreFichero;
+        File fichero;
+        boolean resultado = true;
+        ObjectOutputStream datos;
+        
+        try {
+        	ficheroPropiedades = new FileReader(FICHEROPROPIEDADES);
+        	propiedades.load(ficheroPropiedades);
+        	nombreFichero = propiedades.getProperty(NOMBREFICHERO);
+        	
+        	fichero = new File(nombreFichero);
+        	datos = new ObjectOutputStream(new FileOutputStream(fichero));
+        	if(datos != null) {
+        		datos.writeObject(abono);
+        		datos.close();
+        		ficheroPropiedades.close();	
+        	}
+        	
+        } catch(FileNotFoundException e) {
+        	System.out.println("El fichero " + NOMBREFICHERO + "no existe.");
+        } catch (IOException e) {
+			e.printStackTrace();
+		}
+        return resultado;
     }
 
     @Override
+    public boolean borrar(ObjetoAbono objeto) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public ObjetoAbono buscar(Long idAbono) {
+    	Properties propiedades = new Properties();
+        FileReader ficheroPropiedades;
+        String nombreFichero = null;
+        ObjetoAbono datosAbono = null;
+
+
+        FileInputStream fichero = null;
+        ObjectInputStream contenido = null;
+
+
+        try {
+
+            ficheroPropiedades = new FileReader(FICHEROPROPIEDADES);
+            propiedades.load(ficheroPropiedades);
+            nombreFichero = propiedades.getProperty(NOMBREFICHERO);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
+        try {
+            fichero = new FileInputStream( nombreFichero );
+            contenido = new ObjectInputStream( fichero );
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if(contenido!=null) {
+            ObjetoAbono abono = null;
+
+            try {
+                while(true) {
+                    abono = (ObjetoAbono) contenido.readObject();
+
+                    if(abono.getIdAbono()==idAbono) {
+                     datosAbono=abono;
+                     break;
+                    }
+                }
+            }  catch (EOFException e ) {
+                e.printStackTrace();
+            }catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                contenido.close();
+                fichero.close();
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return datosAbono;
+    }
+
+    @Override
+    public boolean modificar(ObjetoAbono abono) {
+        Properties propiedades = new Properties();
+        FileReader ficheroPropiedades;
+        String nombreFichero = null;
+        Boolean resultado = true;
+
+        File ficheroLectura = null;
+		File ficheroEscritura = null;
+
+
+        try {
+
+            ficheroPropiedades = new FileReader(FICHEROPROPIEDADES);
+            propiedades.load(ficheroPropiedades);
+            nombreFichero = propiedades.getProperty(NOMBREFICHERO);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }      
+        
+        if (nombreFichero == null) return false;
+        
+        FileInputStream ficheroOrigen = null;
+		ObjectInputStream contenidoLectura = null;
+		
+		FileOutputStream ficheroDestino = null;
+		ObjectOutputStream contenidoEscritura = null;
+		
+		try {
+			
+			ficheroLectura = new File(nombreFichero);
+			ficheroOrigen = new FileInputStream (ficheroEscritura);
+			contenidoLectura= new ObjectInputStream (ficheroOrigen);
+			
+			ficheroEscritura = new File(FICHEROTEMPORAL);
+			ficheroDestino = new FileOutputStream (ficheroLectura);
+			contenidoEscritura= new ObjectOutputStream (ficheroDestino);
+				
+			
+			
+		} catch (FileNotFoundException e) {
+
+			System.out.println("El fichero de " + nombreFichero + " no existe");
+			return resultado;
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+
+        if (contenidoLectura != null && contenidoEscritura != null) {
+			ObjetoAbono abonoAuxiliar = null;
+			
+			try {
+				while (true)
+                 {
+					abonoAuxiliar = (ObjetoAbono) contenidoLectura.readObject() ;
+					if (abonoAuxiliar.getIdAbono().equals(abono.getIdAbono())) 
+                    {
+						abonoAuxiliar = abono;
+						resultado = !resultado;
+					}
+					contenidoEscritura.writeObject(abonoAuxiliar);
+						
+				}
+			} catch (EOFException e) {
+				
+			} catch (ClassNotFoundException e) {
+				
+				e.printStackTrace();
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+		
+			try {
+				contenidoLectura.close();
+				ficheroOrigen.close();
+				contenidoEscritura.close();
+				ficheroDestino.close();
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+			
+			ficheroLectura.delete();
+		    ficheroEscritura.renameTo(ficheroLectura);
+			
+		}
+
+
+        
+        return resultado;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    /*@Override
     public boolean insertar(ObjetoAbono abono) {
         Boolean resultado = true;
 
@@ -136,7 +355,7 @@ public class AbonoDatosImp implements AbonoDatos{
 			bw.close();
 
 		} catch(IOException e) {}
-    }*/
+    }
 
     private boolean comprobarExistenciaAbono(ObjetoAbono abono) {
         File f;
@@ -326,7 +545,7 @@ public class AbonoDatosImp implements AbonoDatos{
         return false;
         // TODO Auto-generated method stub
     }
-
+ */
     
     
 }

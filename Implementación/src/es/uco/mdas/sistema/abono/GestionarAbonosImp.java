@@ -9,7 +9,6 @@ import es.uco.mdas.negocio.socio.datos.SocioDatosImp;
 public class GestionarAbonosImp implements GestionarAbonos{
 
     private SocioMgt gestorSocio;
-    //private IGestorAbonos gestorAbono;
 
     public GestionarAbonosImp(){
         this.gestorSocio = new SocioMgtImp(new AbonoDatosImp(), new SocioDatosImp());
