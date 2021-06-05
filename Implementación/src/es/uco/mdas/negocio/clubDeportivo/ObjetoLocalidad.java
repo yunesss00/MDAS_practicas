@@ -102,7 +102,8 @@ public class ObjetoLocalidad {
 	}
 	
 	public String infoLocalidad() {
-		String infoLocalidad = "IDLocalidad : " + idLocalidad + " IDAbono : " + idAbono + " Zona : " + zona + " Sector : " + sector + " Fila : " + fila + " Asiento : " + asiento + " Estado : " + estado;
+		String infoLocalidad = "IDLocalidad : " + idLocalidad + " IDAbono : " + idAbono + " Zona : " 
+				+ zona + " Sector : " + sector + " Fila : " + fila + " Asiento : " + asiento + " Estado : " + estado;
 		return infoLocalidad;
 	}
 }

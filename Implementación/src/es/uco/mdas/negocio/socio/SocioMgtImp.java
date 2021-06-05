@@ -13,12 +13,12 @@ import es.uco.mdas.negocio.socio.datos.AbonoDatos;
 import es.uco.mdas.negocio.socio.datos.SocioDatos;
 import es.uco.mdas.negocio.socio.datos.SocioDatosImp;
 
-public class SocioImp implements SocioMgt{
+public class SocioMgtImp implements SocioMgt{
 
     private AbonoDatos abonoDatos;
     private SocioDatos socioDatos;
 
-    public SocioImp(AbonoDatos abonoDatos, SocioDatos socioDatos) {
+    public SocioMgtImp(AbonoDatos abonoDatos, SocioDatos socioDatos) {
         this.abonoDatos = abonoDatos;
         this.socioDatos = socioDatos;
     }
@@ -64,20 +64,18 @@ public class SocioImp implements SocioMgt{
 
 	@Override
 	public ObjetoSocio setTipoSocio(String tipoSocio, ObjetoSocio socio) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean comprobarExistenciaSocio(Long idSocio) {
-		// TODO Auto-generated method stub
-		return false;
+		if(socioDatos.buscar(idSocio)==null) return false;
+		return true;
 	}
 
 	@Override
 	public ObjetoSocio mostrarDatosSocio(Long idSocio) {
-		// TODO Auto-generated method stub
-		return null;
+		return socioDatos.buscar(idSocio);
 	}
 
 	@Override
@@ -86,7 +84,8 @@ public class SocioImp implements SocioMgt{
 		ObjetoSocio socio = mostrarDatosSocio(idSocio);
 		
 	    LocalDate hoy = LocalDate.now();
-	    LocalDate nacimiento = socio.getFechaNacimientoSocio().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+	    LocalDate nacimiento = socio.getFechaNacimientoSocio()
+	    		.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 	    long edad = ChronoUnit.YEARS.between(nacimiento, hoy);
 	        
 	    return edad;

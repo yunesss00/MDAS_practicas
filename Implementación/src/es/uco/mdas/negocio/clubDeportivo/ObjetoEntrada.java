@@ -83,8 +83,9 @@ public class ObjetoEntrada {
 		this.precio = precio;
 	}
 	
-	public String infoLocalidad() {
-		String infoLocalidad = "IDEntrada : " + idEntrada + " Localidad : " + localidad + " FechaPartido : " + fechaPartido + " HoraPartido : " + horaPartido + " Equipo : " + equipo + " Precio : " + precio;
-		return infoLocalidad;
+	public String infoEntrada() {
+		String infoEntrada = "IDEntrada : " + idEntrada + " Localidad : " + localidad + " FechaPartido : " 
+				+ fechaPartido + " HoraPartido : " + horaPartido + " Equipo : " + equipo + " Precio : " + precio;
+		return infoEntrada;
 	}
 }

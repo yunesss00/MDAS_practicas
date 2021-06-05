@@ -2,17 +2,17 @@ package es.uco.mdas.sistema.abono;
 
 import es.uco.mdas.negocio.socio.ObjetoAbono;
 import es.uco.mdas.negocio.socio.SocioMgt;
-import es.uco.mdas.negocio.socio.SocioImp;
+import es.uco.mdas.negocio.socio.SocioMgtImp;
 import es.uco.mdas.negocio.socio.datos.AbonoDatosImp;
 import es.uco.mdas.negocio.socio.datos.SocioDatosImp;
 
-public class AbonoImp implements IAbono{
+public class GestionarAbonosImp implements GestionarAbonos{
 
     private SocioMgt gestorSocio;
     //private IGestorAbonos gestorAbono;
 
-    public AbonoImp(){
-        this.gestorSocio = new SocioImp(new AbonoDatosImp(), new SocioDatosImp());
+    public GestionarAbonosImp(){
+        this.gestorSocio = new SocioMgtImp(new AbonoDatosImp(), new SocioDatosImp());
     }
 
     @Override

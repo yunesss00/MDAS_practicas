@@ -1,10 +1,8 @@
 package es.uco.mdas.sistema.localidad;
 
 public interface VenderEntrada {
-
-	public void confirmarCompra();
 	
-	public void actualizarLocalidad();
+	public void actualizarLocalidad(Long idLocalidad);
 	
-	public void notificarPago();
+	public String notificarPago(Long idLocalidad);
 }

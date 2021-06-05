@@ -2,7 +2,7 @@ package es.uco.mdas.sistema.abono;
 
 import es.uco.mdas.negocio.socio.ObjetoAbono;
 
-public interface IAbono {
+public interface GestionarAbonos {
     /**
      * Da de alta un abono
      * @param abono

@@ -1,9 +1,11 @@
 package es.uco.mdas.sistema.localidad;
 
+import es.uco.mdas.negocio.clubDeportivo.ObjetoLocalidad;
+
 public interface BuscarLocalidad {
 
-	public boolean comprobarExistenciaLocalidad();
+	public boolean comprobarExistenciaLocalidad(Long idLocalidad);
 	
-	public void mostrarDatosLocalidad();
+	public ObjetoLocalidad mostrarDatosLocalidad(Long idLocalidad);
 	
 }
