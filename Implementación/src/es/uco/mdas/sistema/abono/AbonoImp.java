@@ -22,8 +22,8 @@ public class AbonoImp implements IAbono{
     }
 
     @Override
-    public boolean darDeBajaAbono(Abono abono) {
-        return gestorSocio.darDeBajaAbono(abono);
+    public boolean darDeBajaAbono(Long idSocio) {
+        return gestorSocio.darDeBajaAbono(idSocio);
         
     }
 

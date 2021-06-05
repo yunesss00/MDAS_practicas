@@ -4,7 +4,7 @@ public interface SocioMgt {
     
     public boolean darDeAltaAbono(Abono abono);
 
-    public boolean darDeBajaAbono(Abono abono);
+    public boolean darDeBajaAbono(Long idAbono);
 
     public boolean renovarAbono(Long idAbono);
 

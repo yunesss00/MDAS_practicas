@@ -47,7 +47,7 @@ public class AbonoDatosImp implements AbonoDatos{
 			{
 				wr.append(abono.getIdAbono() + "-" + abono.getIdSocio() + "\n");
 				generarAbono(abono);
-				modificarAbonosDisponibles(abono.getDeporteAbono());
+				modificarAbonosDisponibles(abono.getDeporteAbono(),"insertar");
 			}
 			
 			wr.close();
@@ -63,7 +63,7 @@ public class AbonoDatosImp implements AbonoDatos{
         
     }
 
-    private void modificarAbonosDisponibles(String deporteAbono) {
+    private void modificarAbonosDisponibles(String deporteAbono, String operacion) {
         File ficheroLectura;
 		File ficheroEscritura;
 		ficheroLectura = new File(nombreFicheroAbonosDisponibles);
@@ -83,7 +83,14 @@ public class AbonoDatosImp implements AbonoDatos{
 				{
 					partes = linea.split("-");
 					abonosDisponibles = partes[1];
-					nuevosAbonosDisponibles = Integer.parseInt(abonosDisponibles) - 1;
+					if (operacion == "insertar") 
+                    {
+                        nuevosAbonosDisponibles = Integer.parseInt(abonosDisponibles) - 1;
+                    }
+                    else
+                    {
+                        nuevosAbonosDisponibles = Integer.parseInt(abonosDisponibles) + 1;
+                    }
 					linea = deporteAbono + "-" + nuevosAbonosDisponibles + "\n";
 					writer.write(linea);
 				}
@@ -216,7 +223,7 @@ public class AbonoDatosImp implements AbonoDatos{
                 linea = partes[1];
                 if(linea.equals(Long.toString(abono.getIdAbono()))) 
                 {
-                    linea = reader.readLine();
+                   linea = reader.readLine();
                 }
                 else
                 {
@@ -231,13 +238,50 @@ public class AbonoDatosImp implements AbonoDatos{
 
         }catch(FileNotFoundException e){
             e.printStackTrace();
+            resultado = !resultado;
         }catch(IOException e){
             e.printStackTrace();
+            resultado = !resultado;
         }
         
-        
-        
+        modificarAbonosDisponibles(abono.getDeporteAbono(), "borrar");
+        borrarAbonoSocio(abono);
+
         return resultado; 
+    }
+
+    private void borrarAbonoSocio(Abono abono) {
+		String nombreFichero = Long.toString(abono.getIdAbono()) + ".txt";
+		File ficheroLectura = new File(nombreFichero);
+        File ficheroEscritura = new File("temporal.txt");
+
+   
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(ficheroLectura));
+			BufferedWriter writer = new BufferedWriter(new FileWriter(ficheroEscritura));
+			String linea;
+
+            while((linea = reader.readLine()) != null)
+            {
+                if (linea.trim().equals(Long.toString(abono.getIdAbono())))
+                {
+                    linea = reader.readLine();
+                    linea = reader.readLine();   
+                    linea = reader.readLine();
+                }
+                else
+                {
+                    writer.write(linea + "\n");
+                }
+            }
+            writer.close();
+			reader.close();
+			ficheroLectura.delete();
+            ficheroEscritura.renameTo(ficheroLectura);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

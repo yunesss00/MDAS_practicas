@@ -27,10 +27,10 @@ public class SocioImp implements SocioMgt{
     }
 
     @Override
-    public boolean darDeBajaAbono(Abono abono) {
-        Abono informacionAbono = obtenerInformacionAbono(abono.getIdAbono());
+    public boolean darDeBajaAbono(Long idAbono) {
+        Abono informacionAbono = obtenerInformacionAbono(idAbono);
         if(informacionAbono == null) return false;
-        return abonoDatos.borrar(abono);
+        return abonoDatos.borrar(informacionAbono);
     }
 
     @Override
