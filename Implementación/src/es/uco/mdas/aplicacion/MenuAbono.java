@@ -94,14 +94,16 @@ public class MenuAbono {
 
     public long solicitarId() {
     
-    long idAbono;
+    String entrada;
+    Long idAbono;
     Scanner datosScaner = new Scanner(System.in);
     
     System.out.println("\t Introduzca el ID del abono:");
     
-    idAbono = datosScaner.nextLong();
+    entrada = datosScaner.nextLine();
     
-    datosScaner.close();
+    idAbono = Long.parseLong(entrada);
+
     
     return idAbono;
 
