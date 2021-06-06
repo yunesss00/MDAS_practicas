@@ -33,7 +33,14 @@ public class SocioDatosImp implements SocioDatos{
         	nombreFichero = propiedades.getProperty(NOMBREFICHERO);
         	
         	fichero = new File(nombreFichero);
-        	datos = new ObjectOutputStream(new FileOutputStream(fichero));
+        	
+        	if(fichero.length() == 0) {
+        		datos = new ObjectOutputStream(new FileOutputStream(fichero));
+        	}
+        	else {
+            	datos = new MiObjectOutputStream(new FileOutputStream(fichero,true));
+        	}
+        	
         	if(datos != null) {
         		datos.writeObject(socio);
         		datos.close();
