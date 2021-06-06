@@ -25,7 +25,7 @@ public class MenuAbono {
              System.out.println("|\t Pulse 0 + Enter  -  Para dar de alta un abono a un socio          |");
              System.out.println("|\t Pulse 1 + Enter  -  Para dar de baja un abono                     |");
              System.out.println("|\t Pulse 2 + Enter  -  Para renovar un abono                         |");
-             System.out.println("|\t Pulse 3 + Enter  -  Para volver al menú principal                 |");
+             System.out.println("|\t Pulse 3 + Enter  -  Para volver al menu principal                 |");
              System.out.println("|--------------------------------------------------------------------------|");
             
             try {
@@ -97,26 +97,27 @@ public class MenuAbono {
     public static ObjetoAbono solicitarParametros(){
         ObjetoAbono abono = new ObjetoAbono();
         Long idSocio = null;
-        String entrada;
+        String deporte;
+        String tipo;
         Scanner datosScaner = new Scanner(System.in);
 
         System.out.println("\tIntroduzca el identificador del socio:");
         idSocio = datosScaner.nextLong();
-        abono.setIdSocio(idSocio);
-
+        
         System.out.println("\tIntroduzca el deporte del abono:");
-        entrada = datosScaner.nextLine();
-        abono.setDeporteAbono(entrada);
+        deporte = datosScaner.nextLine();
+        
 
         System.out.println("\tIntroduzca el tipo de abono:");
-        entrada = datosScaner.nextLine();
-        abono.setTipoAbono(entrada);
-
+        tipo = datosScaner.nextLine();
+        
+        abono.setTipoAbono(tipo);
+        abono.setDeporteAbono(deporte);
+        abono.setIdSocio(idSocio);
         abono.setFechaExpedicionAbono();
         abono.setIdAbono(23);
         abono.setLocalidad();
 
-        datosScaner.close();
 
         return abono;
     }
