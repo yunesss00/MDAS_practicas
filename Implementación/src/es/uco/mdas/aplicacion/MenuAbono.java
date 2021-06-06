@@ -64,7 +64,7 @@ public class MenuAbono {
                 break;
                 case 3:
                     salir = true;
-                    System.out.println("Volviendo al menú principal ...");
+                    System.out.println("Volviendo al menu principal ...");
                 break;
                 
                     default:
@@ -96,13 +96,14 @@ public class MenuAbono {
 
     public static ObjetoAbono solicitarParametros(){
         ObjetoAbono abono = new ObjetoAbono();
-        Long idSocio = null;
+        int idSocio;
         String deporte;
         String tipo;
         Scanner datosScaner = new Scanner(System.in);
 
         System.out.println("\tIntroduzca el identificador del socio:");
-        idSocio = datosScaner.nextLong();
+        idSocio = datosScaner.nextInt();
+        datosScaner.nextLine();
         
         System.out.println("\tIntroduzca el deporte del abono:");
         deporte = datosScaner.nextLine();
