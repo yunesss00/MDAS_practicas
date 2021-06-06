@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class ObjetoSocio implements Serializable {
-
+	private static final long serialVersionUID = 1L;
 	private Long idSocio;
 	private String nombreSocio;
 	private String apellidosSocio;
@@ -73,6 +73,15 @@ public class ObjetoSocio implements Serializable {
 	
 	public void setTipoCarnet(TipoCarnet tipoCarnet) {
 		this.tipoCarnet = tipoCarnet;
+	}
+	
+	public void calcularIdAleatoria() {
+		this.idSocio = (long) Math.floor(Math.random()*(100-0+1)+0);
+	}
+	
+	public String mostrarDatosSocio() {
+		return "Datos del socio introducido: IdSocio = " + this.idSocio + "\nNombreSocio = " + this.nombreSocio +
+				"\nApellidosSocio = " + this.apellidosSocio + "\nFechaNacimiento = " + this.fechaNacimientoSocio;
 	}
 }
 

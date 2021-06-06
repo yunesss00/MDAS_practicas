@@ -51,7 +51,7 @@ public class MenuSocio {
 	    		
 		    	ObjetoSocio nuevoSocio = solicitarDatos();
 			    registroSocio.setDatosSocio(nuevoSocio);
-			    		
+			    System.out.println(nuevoSocio.mostrarDatosSocio());
 	    		
 	    		break;
 		    	case 1:
@@ -135,7 +135,9 @@ public class MenuSocio {
 		idSocio = datosScaner.nextLong();
 		
 		datosScaner.close();
+		
 		return idSocio;
+		
 		
 	}
 }

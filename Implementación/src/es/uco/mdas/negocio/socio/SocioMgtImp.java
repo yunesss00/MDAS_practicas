@@ -49,6 +49,7 @@ public class SocioMgtImp implements SocioMgt{
 
 	@Override
 	public boolean setDatosSocio(ObjetoSocio socio) {
+		socio.calcularIdAleatoria();
 		return socioDatos.insertar(socio);		
 	}
 

@@ -63,7 +63,7 @@ public class SocioDatosImp implements SocioDatos{
     }
     
     @Override
-    public ObjetoSocio buscar(Long idSocio) {
+    public ObjetoSocio buscar(long idSocio) {
     	Properties propiedades = new Properties();
         FileReader ficheroPropiedades;
         String nombreFichero = null;
@@ -89,8 +89,8 @@ public class SocioDatosImp implements SocioDatos{
 
 
         try {
-            fichero = new FileInputStream( nombreFichero );
-            contenido = new ObjectInputStream( fichero );
+            fichero = new FileInputStream(nombreFichero);
+            contenido = new ObjectInputStream(fichero);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

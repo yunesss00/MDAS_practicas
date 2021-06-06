@@ -1,10 +1,16 @@
 package es.uco.mdas.negocio.clubDeportivo;
-
-import es.uco.mdas.negocio.clubDeportivo.datos.LocalidadDatosImp;
+import es.uco.mdas.negocio.clubDeportivo.datos.LocalidadDatos;
+import es.uco.mdas.negocio.clubDeportivo.datos.EntradaDatos;
 
 public class ClubDeportivoMgtImp implements ClubDeportivoMgt{
-	LocalidadDatosImp localidadDatos;
 	private static final String RESERVADO = "RESERVADO";
+	private LocalidadDatos localidadDatos;
+	private EntradaDatos entradaDatos;
+	
+	public ClubDeportivoMgtImp(LocalidadDatos localidadDatos, EntradaDatos entradaDatos) {
+        this.localidadDatos = localidadDatos;
+        this.entradaDatos = entradaDatos;
+    }
 
 	@Override
 	public boolean comprobarExistenciaLocalidad(Long idLocalidad) {
