@@ -54,4 +54,12 @@ public class ClubDeportivoMgtImp implements ClubDeportivoMgt{
 		return entradaDatos.insertar(entrada);
 	}
 
+	@Override
+	public boolean existeEntrada(Long idLocalidad) {
+		ObjetoEntrada entrada;
+		entrada = entradaDatos.buscar(idLocalidad);
+		if(entrada!=null) {return true;}
+		return false;
+	}
+
 }

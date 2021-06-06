@@ -10,8 +10,8 @@ public class ObjetoEntrada implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private long idEntrada;
-	private long idLocalidad;
+	private Long idEntrada;
+	private Long idLocalidad;
 	private Date fechaPartido;  
 	private String horaPartido;
 	private String comprador;
@@ -28,7 +28,7 @@ public class ObjetoEntrada implements Serializable {
 	 * @param precio
 	 */
 	
-	public ObjetoEntrada(long idEntrada, long idLocalidad, Date fechaPartido, String horaPartido, String comprador, float precio ) {
+	public ObjetoEntrada(Long idEntrada, Long idLocalidad, Date fechaPartido, String horaPartido, String comprador, float precio ) {
 		this.idEntrada = idEntrada;
 		this.idLocalidad = idLocalidad;
 		this.fechaPartido = fechaPartido;  
@@ -41,7 +41,7 @@ public class ObjetoEntrada implements Serializable {
 	
 	public ObjetoEntrada() {}
 	
-	public long getIdEntrada() {
+	public Long getIdEntrada() {
 		return idEntrada;
 	}
 
@@ -49,7 +49,7 @@ public class ObjetoEntrada implements Serializable {
 		this.idEntrada = idEntrada;
 	}
 
-	public long getLocalidad() {
+	public Long getIdLocalidad() {
 		return idLocalidad;
 	}
 

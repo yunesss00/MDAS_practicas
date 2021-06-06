@@ -4,6 +4,6 @@ public interface AccesoDatos <T>{
 	
 	public boolean insertar(T objeto);
 	
-	public T buscar(long idObjeto);
+	public T buscar(Long idObjeto);
 	
 }

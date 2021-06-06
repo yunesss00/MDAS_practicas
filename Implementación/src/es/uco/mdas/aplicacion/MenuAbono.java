@@ -100,16 +100,19 @@ public class MenuAbono {
                  break;
                 case 4:
                    idLocalidad = solicitarIdLocalidad();
-                 /*  if ((gestorLocalidad.comprobarReservaLocalidad(idLocalidad) == true)){
-   		    		System.out.println("Esta localidad esta reservada");
-                   }
-                   else {*/
-                	   entrada =  solicitarDatosEntrada(idLocalidad);
+                  
+                   		if(!gestorEntrada.existeEntrada(idLocalidad)) {
+                   		 entrada =  solicitarDatosEntrada(idLocalidad);
+               			gestorEntrada.setDatosEntrada(entrada);
+               			System.out.println("Entrada procesada con exito \n");
+               			System.out.println(entrada.infoEntrada());
+                   			}
+                   	else {
+                   		System.out.println("Lo siento la localidad ya se encuentra reservada \n");
+                   	}
+                	  
                 	 // gestorEntrada.actualizarLocalidad(idLocalidad);
-                	   gestorEntrada.setDatosEntrada(entrada);
-                	   System.out.println("Entrada procesada con exito \n");
-       			       System.out.println(entrada.infoEntrada());
-                   
+                	 
                    
                 	
                 break;

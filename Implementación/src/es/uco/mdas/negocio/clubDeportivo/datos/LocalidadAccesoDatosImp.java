@@ -57,7 +57,7 @@ public class LocalidadAccesoDatosImp implements LocalidadAccesoDatos {
     }
 
 	@Override
-	public ObjetoLocalidad buscar(long idObjeto) {
+	public ObjetoLocalidad buscar(Long idObjeto) {
 		Properties propiedades = new Properties();
 		FileReader ficheroPropiedades = null;
 		String nombreFichero = null;

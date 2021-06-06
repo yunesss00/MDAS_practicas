@@ -56,7 +56,7 @@ public class EntradaAccesoDatosImp implements EntradaAccesoDatos{
     }
 
 	@Override
-	public ObjetoEntrada buscar(long idObjeto) {
+	public ObjetoEntrada buscar(Long idObjeto) {
 		Properties propiedades = new Properties();
 		FileReader ficheroPropiedades = null;
 		String nombreFichero = null;
@@ -97,7 +97,7 @@ public class EntradaAccesoDatosImp implements EntradaAccesoDatos{
 			  try {
 	            	entrada = (ObjetoEntrada) datos.readObject();
 	            	while(entrada != null) {
-	            		if(entrada.getIdEntrada()== idObjeto) {
+	            		if(entrada.getIdLocalidad().equals(idObjeto)) {
 	                    	datosEntrada = entrada;
 	                    	break;
 	                    }
@@ -105,7 +105,7 @@ public class EntradaAccesoDatosImp implements EntradaAccesoDatos{
 	            	}
 	                
 	            }  catch (EOFException e ) {
-	                System.out.println("No se ha encontrado esa entrada");
+	                System.out.println("Esta localidad se encuentra disponible..");
 	            }catch (ClassNotFoundException e) {
 	                e.printStackTrace();
 	            } catch (IOException e) {

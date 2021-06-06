@@ -31,4 +31,10 @@ public class VenderEntradaImp implements VenderEntrada {
 		return gestorClub.setDatosEntrada(entrada);
 	}
 
+	@Override
+	public boolean existeEntrada(Long idlocalidad) {
+		
+		return gestorClub.existeEntrada(idlocalidad);
+	}
+
 }

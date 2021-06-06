@@ -15,5 +15,9 @@ public interface ClubDeportivoMgt {
 	public String notificarPago(Long idLocalidad);
 	
 	public boolean setDatosEntrada(ObjetoEntrada entrada);
+	
+	public boolean existeEntrada(Long idLocalidad);
+	
+	
 
 }

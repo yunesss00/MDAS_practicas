@@ -9,4 +9,6 @@ public interface VenderEntrada {
 	public String notificarPago(Long idLocalidad);
 	
 	public boolean setDatosEntrada(ObjetoEntrada entrada);
+	
+	public boolean existeEntrada(Long idlocalidad);
 }
