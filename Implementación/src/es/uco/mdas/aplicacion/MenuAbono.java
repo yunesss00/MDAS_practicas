@@ -13,18 +13,19 @@ public class MenuAbono {
 
         GestionarAbonosImp gestorAbono = new GestionarAbonosImp();
         Long idAbono = null;
+        Boolean salir = false;
         ObjetoAbono abono = new ObjetoAbono();
 
         int opcionMenu = 1;
         Scanner opcion;
-        while (opcionMenu != 0) {
+        while (!salir) {
              System.out.println("|--------------------------------------------------------------------------|");
-             System.out.println("|\t Bienvenido al Programa Gestor de abonos                 |");
+             System.out.println("|\t Bienvenido al Programa Gestor de abonos                           |");
              System.out.println("|--------------------------------------------------------------------------|");
-             System.out.println("|\t Pulse 0 + Enter  -  Para dar de alta un abono a un socio                    	   |");
-             System.out.println("|\t Pulse 1 + Enter  -  Para dar de baja un abono                        |");
-             System.out.println("|\t Pulse 2 + Enter  -  Para renovar un abono                   |");
-             System.out.println("|\t Pulse 3 + Enter  -  Para salir                        |");
+             System.out.println("|\t Pulse 0 + Enter  -  Para dar de alta un abono a un socio          |");
+             System.out.println("|\t Pulse 1 + Enter  -  Para dar de baja un abono                     |");
+             System.out.println("|\t Pulse 2 + Enter  -  Para renovar un abono                         |");
+             System.out.println("|\t Pulse 3 + Enter  -  Para volver al menú principal                 |");
              System.out.println("|--------------------------------------------------------------------------|");
             
             try {
@@ -62,7 +63,8 @@ public class MenuAbono {
                     
                 break;
                 case 3:
-
+                    salir = true;
+                    System.out.println("Volviendo al menú principal ...");
                 break;
                 
                     default:
@@ -70,6 +72,9 @@ public class MenuAbono {
                         System.out.println("Intentelo de nuevo");
             } 
         }
+
+        String[] argv = null;
+		MenuPrincipal.main(argv);
 
 
     }

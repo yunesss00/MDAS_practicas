@@ -7,9 +7,6 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import es.uco.mdas.negocio.socio.ObjetoSocio;
-import es.uco.mdas.negocio.socio.SocioMgtImp;
-import es.uco.mdas.negocio.socio.TipoCarnet;
-import es.uco.mdas.negocio.socio.datos.SocioDatosImp;
 import es.uco.mdas.sistema.socio.BuscarSocio;
 import es.uco.mdas.sistema.socio.BuscarSocioImp;
 import es.uco.mdas.sistema.socio.RegistrarSocio;
@@ -20,19 +17,21 @@ public class MenuSocio {
 	public void DesplegarMenu(){
 		
 		int opcionMenu = 1;
+		Boolean salir = false;
 		Scanner opcion;
+		MenuPrincipal menuPrincipal = new MenuPrincipal();
 		BuscarSocio busquedaSocio = new BuscarSocioImp();
 		RegistrarSocio registroSocio = new RegistrarSocioImp();
 		
-		while (opcionMenu != 4 ) {
+		while (!salir) {
 		 System.out.println("|----------------------------------------------------------------|");
 		 System.out.println("|            Bienvenido al GESTOR DE SOCIOS                      |");
 		 System.out.println("|----------------------------------------------------------------|");
-		 System.out.println("|        Pulse 0 + Enter  -  Para añadir un nuevo socio          |");
+		 System.out.println("|        Pulse 0 + Enter  -  Para aï¿½adir un nuevo socio          |");
 		 System.out.println("|        Pulse 1 + Enter  -  Para buscar un socio                |");
 		 System.out.println("|        Pulse 2 + Enter  -  Para modificar un socio             |");
 		 System.out.println("|        Pulse 3 + Enter  -  Para eliminar un socio              |");
-		 System.out.println("|        Pulse 4 + Enter  -  Para salir del gestor de socios     |");
+		 System.out.println("|        Pulse 4 + Enter  -  Para volver al menÃº principal       |");
 		 System.out.println("|----------------------------------------------------------------|");
 		 
 		 
@@ -80,16 +79,20 @@ public class MenuSocio {
 		    		
 			    	break;
 		    	case 4:
-		    		
-		    		System.out.println("Hasta la proxima...");
+		    		salir = true;
+		    		System.out.println("Volviendo al menÃº principal ...");
 			    		
 			    	break;
 		    	
 		    		default:
-		    			System.out.println("La opcion escogida no se encuentra en el menú");
+		    			System.out.println("La opcion escogida no se encuentra en el menï¿½");
 		    			System.out.println("Intentelo de nuevo");
 		    } 
 		}
+
+		String[] argv = null;
+		MenuPrincipal.main(argv);
+
 	}
 
 	

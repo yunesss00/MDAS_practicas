@@ -12,9 +12,10 @@ public class MenuPrincipal {
 			
 			MenuSocio menuSocio = new MenuSocio();
 			MenuAbono menuAbono = new MenuAbono();
+			Boolean cerrar = false;
 			int opcionMenu = 1;
 			Scanner opcion;
-			while (opcionMenu != 0) {
+			while (!cerrar) {
 				 System.out.println("|--------------------------------------------------------------------------|");
 				 System.out.println("|        Bienvenido al Programa Gestor del Club deportivo                  |");
 				 System.out.println("|--------------------------------------------------------------------------|");
@@ -45,7 +46,8 @@ public class MenuPrincipal {
 			    		
 			    	break;
 			    	case 2:
-			    		
+						cerrar = true;
+			    		System.out.println("Cerrando aplicación ...");
 			    		
 			    	break;
 			    	
