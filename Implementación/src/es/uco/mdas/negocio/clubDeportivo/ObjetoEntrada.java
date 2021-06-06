@@ -4,11 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class ObjetoEntrada implements Serializable {
-
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private Long idEntrada;
 	private Long idLocalidad;
@@ -38,6 +33,10 @@ public class ObjetoEntrada implements Serializable {
 	
 		
 	}
+	
+	/**
+	 * Constructor vacío de una entrada
+	 */
 	
 	public ObjetoEntrada() {}
 	
@@ -89,11 +88,17 @@ public class ObjetoEntrada implements Serializable {
 		this.precio = precio;
 	}
 	
+	
 	public void calcularIdAleatoria() {
 		int idMaximo = 9999;
 		int idMinimo = 0;
 		this.idEntrada = (long) Math.floor(Math.random()*(idMaximo-idMinimo+1)+idMinimo);
 	}
+	
+	/**
+	 * Función que agrupa los atributos de una entrada en un String 
+	 * @return infoEntrada 
+	 */
 	
 	public String infoEntrada() {
 		String infoEntrada = "IDEntrada : " + idEntrada + " Localidad : " + idLocalidad + " FechaPartido : " 
