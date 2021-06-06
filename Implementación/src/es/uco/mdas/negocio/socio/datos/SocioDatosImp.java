@@ -63,7 +63,7 @@ public class SocioDatosImp implements SocioDatos{
     }
     
     @Override
-    public ObjetoSocio buscar(long idSocio) {
+    public ObjetoSocio buscar(Long idSocio) {
     	Properties propiedades = new Properties();
         FileReader ficheroPropiedades;
         String nombreFichero = null;
