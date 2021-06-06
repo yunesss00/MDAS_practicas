@@ -11,6 +11,7 @@ public class MenuPrincipal {
 		public static void main(String[] argv) {
 			
 			MenuSocio menuSocio = new MenuSocio();
+			MenuAbono menuAbono = new MenuAbono();
 			int opcionMenu = 1;
 			Scanner opcion;
 			while (opcionMenu != 0) {
@@ -39,7 +40,8 @@ public class MenuPrincipal {
 		    		
 		    		break;
 			    	case 1:
-			    		
+			    	
+					menuAbono.DesplegarMenu();
 			    		
 			    	break;
 			    	case 2:
@@ -48,7 +50,7 @@ public class MenuPrincipal {
 			    	break;
 			    	
 			    		default:
-			    			System.out.println("La opcion escogida no se encuentra en el menú");
+			    			System.out.println("La opcion escogida no se encuentra en el menï¿½");
 			    			System.out.println("Intentelo de nuevo");
 			    } 
 			}

@@ -104,4 +104,10 @@ public class ObjetoAbono implements Serializable{
 		fechaExpedicion = LocalDate.parse(aux);
 		this.fechaExpedicionAbono = fechaExpedicion;
 	}
+
+	public String infoAbono() {
+		String infoAbono = "IDSocio : " + idSocio +"IDAbono : " + idAbono +" Deporte : " + deporteAbono +
+			" Tipo abono : " + tipoAbono + " FechaExpedicion : " + fechaExpedicionAbono + " Localidad : " + localidad;
+		return infoAbono;
+	}
 }

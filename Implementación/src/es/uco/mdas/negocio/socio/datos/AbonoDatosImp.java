@@ -48,7 +48,14 @@ public class AbonoDatosImp implements AbonoDatos{
         	nombreFichero = propiedades.getProperty(NOMBREFICHERO);
         	
         	fichero = new File(nombreFichero);
-        	datos = new ObjectOutputStream(new FileOutputStream(fichero));
+        	
+        	if(fichero.length() == 0) {
+        		datos = new ObjectOutputStream(new FileOutputStream(fichero));
+        	}
+        	else {
+            	datos = new MiObjectOutputStream(new FileOutputStream(fichero,true));
+        	}
+        	
         	if(datos != null) {
         		datos.writeObject(abono);
         		datos.close();
@@ -56,7 +63,7 @@ public class AbonoDatosImp implements AbonoDatos{
         	}
         	
         } catch(FileNotFoundException e) {
-        	System.out.println("El fichero " + NOMBREFICHERO + "no existe.");
+        	System.out.println("Hola");
         } catch (IOException e) {
 			e.printStackTrace();
 		}
