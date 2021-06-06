@@ -13,7 +13,7 @@ import java.util.Properties;
 
 import es.uco.mdas.negocio.socio.ObjetoAbono;
 
-public class AbonoDatosImp implements AbonoDatos{
+public class AbonoAccesoDatosImp implements AbonoAccesoDatos{
 
     /*private PropertiesFile p = new PropertiesFile();
     private String nombreFicheroAbonosDisponibles;

@@ -3,15 +3,15 @@ package es.uco.mdas.sistema.abono;
 import es.uco.mdas.negocio.socio.ObjetoAbono;
 import es.uco.mdas.negocio.socio.SocioMgt;
 import es.uco.mdas.negocio.socio.SocioMgtImp;
-import es.uco.mdas.negocio.socio.datos.AbonoDatosImp;
-import es.uco.mdas.negocio.socio.datos.SocioDatosImp;
+import es.uco.mdas.negocio.socio.datos.AbonoAccesoDatosImp;
+import es.uco.mdas.negocio.socio.datos.SocioAccesoDatosImp;
 
 public class GestionarAbonosImp implements GestionarAbonos{
 
     private SocioMgt gestorSocio;
 
     public GestionarAbonosImp(){
-        this.gestorSocio = new SocioMgtImp(new AbonoDatosImp(), new SocioDatosImp());
+        this.gestorSocio = new SocioMgtImp(new AbonoAccesoDatosImp(), new SocioAccesoDatosImp());
     }
 
     @Override

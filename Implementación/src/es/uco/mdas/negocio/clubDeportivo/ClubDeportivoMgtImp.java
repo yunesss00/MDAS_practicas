@@ -1,13 +1,13 @@
 package es.uco.mdas.negocio.clubDeportivo;
-import es.uco.mdas.negocio.clubDeportivo.datos.LocalidadDatos;
-import es.uco.mdas.negocio.clubDeportivo.datos.EntradaDatos;
+import es.uco.mdas.negocio.clubDeportivo.datos.LocalidadAccesoDatos;
+import es.uco.mdas.negocio.clubDeportivo.datos.EntradaAccesoDatos;
 
 public class ClubDeportivoMgtImp implements ClubDeportivoMgt{
 	private static final String RESERVADO = "RESERVADO";
-	private LocalidadDatos localidadDatos;
-	private EntradaDatos entradaDatos;
+	private LocalidadAccesoDatos localidadDatos;
+	private EntradaAccesoDatos entradaDatos;
 	
-	public ClubDeportivoMgtImp(LocalidadDatos localidadDatos, EntradaDatos entradaDatos) {
+	public ClubDeportivoMgtImp(LocalidadAccesoDatos localidadDatos, EntradaAccesoDatos entradaDatos) {
         this.localidadDatos = localidadDatos;
         this.entradaDatos = entradaDatos;
     }

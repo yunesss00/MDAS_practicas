@@ -1,8 +1,8 @@
 package es.uco.mdas.sistema.localidad;
 
 import es.uco.mdas.negocio.clubDeportivo.ClubDeportivoMgtImp;
-import es.uco.mdas.negocio.clubDeportivo.datos.EntradaDatosImp;
-import es.uco.mdas.negocio.clubDeportivo.datos.LocalidadDatosImp;
+import es.uco.mdas.negocio.clubDeportivo.datos.EntradaAccesoDatosImp;
+import es.uco.mdas.negocio.clubDeportivo.datos.LocalidadAccesoDatosImp;
 
 
 public class VenderEntradaImp implements VenderEntrada {
@@ -11,7 +11,7 @@ public class VenderEntradaImp implements VenderEntrada {
 	private BuscarLocalidadImp buscarLocalidad;
 	
 	public VenderEntradaImp() {
-		this.gestorClub = new ClubDeportivoMgtImp(new LocalidadDatosImp(), new EntradaDatosImp());
+		this.gestorClub = new ClubDeportivoMgtImp(new LocalidadAccesoDatosImp(), new EntradaAccesoDatosImp());
 	}
 	
 	@Override

@@ -1,6 +1,6 @@
 package es.uco.mdas.negocio.clubDeportivo.datos;
 
-public interface Datos <T>{
+public interface AccesoDatos <T>{
 	
 	public boolean insertar(T objeto);
 	

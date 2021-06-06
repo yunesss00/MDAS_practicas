@@ -1,6 +1,5 @@
 package es.uco.mdas.negocio.socio.datos;
 
-import es.uco.mdas.negocio.socio.ObjetoAbono;
 import es.uco.mdas.negocio.socio.ObjetoSocio;
 import java.util.Properties;
 import java.io.File;
@@ -14,7 +13,7 @@ import java.io.ObjectOutputStream;
 import java.io.ObjectInputStream;
 
 
-public class SocioDatosImp implements SocioDatos{
+public class SocioAccesoDatosImp implements SocioAccesoDatos{
 	
 	private static final String FICHEROPROPIEDADES = "ficheros.properties";
 	private static final String NOMBREFICHERO = "ficheroSocios";

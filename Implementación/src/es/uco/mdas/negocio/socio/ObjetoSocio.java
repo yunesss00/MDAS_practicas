@@ -76,7 +76,9 @@ public class ObjetoSocio implements Serializable {
 	}
 	
 	public void calcularIdAleatoria() {
-		this.idSocio = (long) Math.floor(Math.random()*(100-0+1)+0);
+		int idMaximo = 9999;
+		int idMinimo = 0;
+		this.idSocio = (long) Math.floor(Math.random()*(idMaximo-idMinimo+1)+idMinimo);
 	}
 	
 	public String infoSocio() {

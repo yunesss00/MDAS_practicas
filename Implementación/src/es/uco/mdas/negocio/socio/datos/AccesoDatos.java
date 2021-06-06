@@ -1,7 +1,7 @@
 package es.uco.mdas.negocio.socio.datos;
 
 
-public interface Datos <T>{
+public interface AccesoDatos <T>{
 		
 	public boolean insertar(T objeto);
 	

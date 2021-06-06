@@ -4,15 +4,15 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 
-import es.uco.mdas.negocio.socio.datos.AbonoDatos;
-import es.uco.mdas.negocio.socio.datos.SocioDatos;
+import es.uco.mdas.negocio.socio.datos.AbonoAccesoDatos;
+import es.uco.mdas.negocio.socio.datos.SocioAccesoDatos;
 
 public class SocioMgtImp implements SocioMgt{
 
-    private AbonoDatos abonoDatos;
-    private SocioDatos socioDatos;
+    private AbonoAccesoDatos abonoDatos;
+    private SocioAccesoDatos socioDatos;
 
-    public SocioMgtImp(AbonoDatos abonoDatos, SocioDatos socioDatos) {
+    public SocioMgtImp(AbonoAccesoDatos abonoDatos, SocioAccesoDatos socioDatos) {
         this.abonoDatos = abonoDatos;
         this.socioDatos = socioDatos;
     }
@@ -55,8 +55,7 @@ public class SocioMgtImp implements SocioMgt{
 
 	@Override
 	public boolean comprobarValidezDatos(ObjetoSocio socio) {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override

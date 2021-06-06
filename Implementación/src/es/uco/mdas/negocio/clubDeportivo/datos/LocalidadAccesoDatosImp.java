@@ -12,11 +12,10 @@ import java.io.ObjectOutputStream;
 import java.util.Properties;
 
 import es.uco.mdas.negocio.clubDeportivo.ObjetoLocalidad;
-import es.uco.mdas.negocio.socio.ObjetoSocio;
 import es.uco.mdas.negocio.socio.datos.MiObjectOutputStream;
 
 
-public class LocalidadDatosImp implements LocalidadDatos {
+public class LocalidadAccesoDatosImp implements LocalidadAccesoDatos {
 
 	private static final String FICHEROPROPIEDADES = "ficheros.properties";
 	
