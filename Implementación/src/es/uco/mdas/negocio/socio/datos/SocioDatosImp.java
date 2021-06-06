@@ -65,13 +65,12 @@ public class SocioDatosImp implements SocioDatos{
     @Override
     public ObjetoSocio buscar(Long idSocio) {
     	Properties propiedades = new Properties();
-        FileReader ficheroPropiedades;
+        FileReader ficheroPropiedades = null;
         String nombreFichero = null;
         ObjetoSocio datosSocio = null;
-
-
-        FileInputStream fichero = null;
-        ObjectInputStream contenido = null;
+        File fichero;
+        FileInputStream ficheroDatos = null;
+        ObjectInputStream datos = null;
 
 
         try {
@@ -89,26 +88,28 @@ public class SocioDatosImp implements SocioDatos{
 
 
         try {
-            fichero = new FileInputStream(nombreFichero);
-            contenido = new ObjectInputStream(fichero);
+            fichero = new File(nombreFichero);
+            ficheroDatos = new FileInputStream(fichero);
+            datos = new ObjectInputStream(ficheroDatos);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        if(contenido!=null) {
+        if(datos!=null) {
             ObjetoSocio socio = null;
 
             try {
-                while(true) {
-                    socio = (ObjetoSocio) contenido.readObject();
-
-                    if(socio.getIdSocio()==idSocio) {
-                     datosSocio=socio;
-                     break;
+            	socio = (ObjetoSocio) datos.readObject();
+            	while(socio != null) {
+            		if(socio.getIdSocio().equals(idSocio)) {
+                    	datosSocio = socio;
+                    	break;
                     }
-                }
+            		socio = (ObjetoSocio) datos.readObject();
+            	}
+                
             }  catch (EOFException e ) {
                 e.printStackTrace();
             }catch (ClassNotFoundException e) {
@@ -118,8 +119,9 @@ public class SocioDatosImp implements SocioDatos{
             }
 
             try {
-                contenido.close();
-                fichero.close();
+                datos.close();
+                ficheroDatos.close();
+                ficheroPropiedades.close();
             }catch (IOException e) {
                 e.printStackTrace();
             }
