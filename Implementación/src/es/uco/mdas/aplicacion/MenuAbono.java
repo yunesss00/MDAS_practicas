@@ -65,7 +65,7 @@ public class MenuAbono {
                     
                 break;
                 case 3:
-                    
+                    idAbono = solicitarId();
                     abono = gestorAbono.obtenerInformacionAbono(idAbono);
                     abono.infoAbono();
 
