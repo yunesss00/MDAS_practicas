@@ -25,8 +25,9 @@ public class MenuAbono {
              System.out.println("|        Pulse 0 + Enter  -  Para dar de alta un abono a un socio          |");
              System.out.println("|        Pulse 1 + Enter  -  Para dar de baja un abono                     |");
              System.out.println("|        Pulse 2 + Enter  -  Para renovar un abono                         |");
-             System.out.println("|        Pulse 3 + Enter  -  Para vender una entrada                       |");
-             System.out.println("|        Pulse 4 + Enter  -  Para volver al menu principal                 |");
+             System.out.println("|        Pulse 3 + Enter  -  Para buscar un abono                          |");
+             System.out.println("|        Pulse 4 + Enter  -  Para vender una entrada                       |");
+             System.out.println("|        Pulse 5 + Enter  -  Para volver al menu principal                 |");
              System.out.println("|--------------------------------------------------------------------------|");
             
             try {
@@ -64,15 +65,19 @@ public class MenuAbono {
                     
                 break;
                 case 3:
-                    salir = true;
-                    System.out.println("Volviendo al menu principal ...");
+                    
+                    abono = gestorAbono.obtenerInformacionAbono(idAbono);
+                    abono.infoAbono();
+
                 break;
                 
                 case 4:
+                    
+                break;
+                case 5:
                     salir = true;
                     System.out.println("Volviendo al menu principal ...");
                 break;
-                
                 
                 
                     default:

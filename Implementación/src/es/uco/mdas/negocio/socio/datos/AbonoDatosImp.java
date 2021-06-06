@@ -30,8 +30,7 @@ public class AbonoDatosImp implements AbonoDatos{
 
     private static final String FICHEROPROPIEDADES = "ficheros.properties";
 	private static final String NOMBREFICHERO = "ficheroAbonos";
-    private static final String FICHEROTEMPORAL = "temporal.bin";
-    //private static final String FICHEROABONOSDISPONIBLES = "abonosDispo";
+    private static final String FICHEROTEMPORAL = "ficheroAuxiliar";
 
     @Override
     public boolean insertar(ObjetoAbono abono) {
@@ -117,7 +116,7 @@ public class AbonoDatosImp implements AbonoDatos{
             try {
             	abono = (ObjetoAbono) datos.readObject();
             	while(abono != null) {
-            		if(abono.getIdSocio().equals(abono)) {
+            		if(abono.getIdAbono().equals(idAbono)) {
                     	datosAbono = abono;
                     	break;
                     }
@@ -125,7 +124,7 @@ public class AbonoDatosImp implements AbonoDatos{
             	}
                 
             }  catch (EOFException e ) {
-                System.out.println("No se ha encontrado a ese socio");
+                System.out.println("No se ha encontrado el abono");
             }catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -145,11 +144,11 @@ public class AbonoDatosImp implements AbonoDatos{
 
     @Override
     public boolean modificar(ObjetoAbono abono) {
-        Properties propiedades = new Properties();
+    	Properties propiedades = new Properties();
         FileReader ficheroPropiedades;
         String nombreFichero = null;
         Boolean resultado = true;
-
+        String nombreFicheroAuxiliar = null;
         File ficheroLectura = null;
 		File ficheroEscritura = null;
 
@@ -159,6 +158,7 @@ public class AbonoDatosImp implements AbonoDatos{
             ficheroPropiedades = new FileReader(FICHEROPROPIEDADES);
             propiedades.load(ficheroPropiedades);
             nombreFichero = propiedades.getProperty(NOMBREFICHERO);
+            nombreFicheroAuxiliar = propiedades.getProperty(FICHEROTEMPORAL);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -177,11 +177,11 @@ public class AbonoDatosImp implements AbonoDatos{
 		try {
 			
 			ficheroLectura = new File(nombreFichero);
-			ficheroOrigen = new FileInputStream (ficheroEscritura);
+			ficheroOrigen = new FileInputStream (ficheroLectura);
 			contenidoLectura= new ObjectInputStream (ficheroOrigen);
 			
-			ficheroEscritura = new File(FICHEROTEMPORAL);
-			ficheroDestino = new FileOutputStream (ficheroLectura);
+			ficheroEscritura = new File(nombreFicheroAuxiliar);
+			ficheroDestino = new FileOutputStream (ficheroEscritura);
 			contenidoEscritura= new ObjectOutputStream (ficheroDestino);
 				
 			
@@ -202,7 +202,7 @@ public class AbonoDatosImp implements AbonoDatos{
 				while (true)
                  {
 					abonoAuxiliar = (ObjetoAbono) contenidoLectura.readObject() ;
-					if (abonoAuxiliar.getIdAbono().equals(abono.getIdAbono())) 
+					if (abonoAuxiliar.getIdSocio().equals(abono.getIdAbono())) 
                     {
 						abonoAuxiliar = abono;
 						resultado = !resultado;
@@ -238,8 +238,8 @@ public class AbonoDatosImp implements AbonoDatos{
 
         
         return resultado;
+        
     }
-
     
 
 
