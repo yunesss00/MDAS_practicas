@@ -1,8 +1,9 @@
 package es.uco.mdas.negocio.socio;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ObjetoSocio {
+public class ObjetoSocio implements Serializable {
 
 	private Long idSocio;
 	private String nombreSocio;
