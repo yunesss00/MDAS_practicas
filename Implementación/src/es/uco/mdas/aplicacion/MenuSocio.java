@@ -61,8 +61,11 @@ public class MenuSocio {
 		    	
 		    
 		    	long idBuscar = solicitarId();
-		    	busquedaSocio.mostrarDatosSocio(idBuscar);
-		    		
+		    	ObjetoSocio socioEncontrado = busquedaSocio.mostrarDatosSocio(idBuscar);
+		    	if(socioEncontrado != null){
+		    		System.out.println(socioEncontrado.mostrarDatosSocio());
+		    	}
+		
 		    	break;
 		    	case 2:
 		    	

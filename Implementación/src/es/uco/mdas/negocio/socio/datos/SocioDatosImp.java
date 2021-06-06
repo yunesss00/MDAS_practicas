@@ -111,7 +111,7 @@ public class SocioDatosImp implements SocioDatos{
             	}
                 
             }  catch (EOFException e ) {
-                e.printStackTrace();
+                System.out.println("No se ha encontrado a ese socio");
             }catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
