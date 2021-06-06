@@ -55,16 +55,22 @@ public class MenuSocio {
 	    		
 	    		break;
 		    	case 1:
-		    		
 		    	
+		    
+		    	long idBuscar = solicitarId();
+		    	busquedaSocio.mostrarDatosSocio(idBuscar);
 		    		
 		    	break;
 		    	case 2:
-		    		
+		    	
+		    	long idModificar = solicitarId();
+			    busquedaSocio.mostrarDatosSocio(idModificar);
 		    		
 		    	break;
 		    	case 3:
-		    		
+		    	
+		    	long idEliminar = solicitarId();
+				busquedaSocio.mostrarDatosSocio(idEliminar);
 		    		
 			    	break;
 		    	case 4:
@@ -116,6 +122,20 @@ public class MenuSocio {
 		ObjetoSocio socio = new ObjetoSocio(nombreSocio,apellidosSocio,fechaNacimientoSocio);
 		return socio;
 		
+		
+	}
+
+	public long solicitarId() {
+		
+		long idSocio;
+		Scanner datosScaner = new Scanner(System.in);
+		
+		System.out.println("\t Introduzca la ID del socio que desea buscar ");
+		
+		idSocio = datosScaner.nextLong();
+		
+		datosScaner.close();
+		return idSocio;
 		
 	}
 }
