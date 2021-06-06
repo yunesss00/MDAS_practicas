@@ -24,7 +24,7 @@ public class MenuSocio {
 		BuscarSocio busquedaSocio = new BuscarSocioImp();
 		RegistrarSocio registroSocio = new RegistrarSocioImp();
 		
-		while (opcionMenu != 0) {
+		while (opcionMenu != 4 ) {
 		 System.out.println("|----------------------------------------------------------------|");
 		 System.out.println("|            Bienvenido al GESTOR DE SOCIOS                      |");
 		 System.out.println("|----------------------------------------------------------------|");
@@ -39,20 +39,23 @@ public class MenuSocio {
 		 try {
 		    	opcion = new Scanner(System.in);
 		    	opcionMenu = opcion.nextInt();
+		    	
          }
          catch (InputMismatchException e) 
          {
-         	opcionMenu = 0;
+         	opcionMenu = 4;
          	System.out.println("El valor introducido es incorrecto intentelo de nuevo");
          }
+		    
 		    
 		    switch (opcionMenu) {
 		    	case 0: 
 	    		
 		    	ObjetoSocio nuevoSocio = solicitarDatos();
 			    registroSocio.setDatosSocio(nuevoSocio);
+			    System.out.println("Socio introducido con exito \n");
 			    System.out.println(nuevoSocio.mostrarDatosSocio());
-	    		
+			   
 	    		break;
 		    	case 1:
 		    	
@@ -75,7 +78,8 @@ public class MenuSocio {
 			    	break;
 		    	case 4:
 		    		
-		    		
+		    		System.out.println("Hasta la proxima...");
+			    		
 			    	break;
 		    	
 		    		default:
@@ -118,8 +122,7 @@ public class MenuSocio {
 				e.printStackTrace();
 			}
 	
-		datosScaner.close();
-		ObjetoSocio socio = new ObjetoSocio(nombreSocio,apellidosSocio,fechaNacimientoSocio);
+				ObjetoSocio socio = new ObjetoSocio(nombreSocio,apellidosSocio,fechaNacimientoSocio);
 		return socio;
 		
 		
@@ -134,7 +137,7 @@ public class MenuSocio {
 		
 		idSocio = datosScaner.nextLong();
 		
-		datosScaner.close();
+	
 		
 		return idSocio;
 		
