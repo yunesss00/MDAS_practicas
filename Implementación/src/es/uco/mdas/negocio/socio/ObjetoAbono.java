@@ -68,7 +68,9 @@ public class ObjetoAbono implements Serializable{
 	}
 	
 	public void setLocalidad() {
-		this.localidad = localidad++;
+		int idMaximo = 9999;
+		int idMinimo = 0;
+        this.localidad = (int) Math.floor(Math.random()*(idMaximo-idMinimo+1)+idMinimo);
 	}
 	
 	public void setTipoAbono(String tipoAbono) {

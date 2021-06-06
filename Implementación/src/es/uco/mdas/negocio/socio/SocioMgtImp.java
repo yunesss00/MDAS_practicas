@@ -21,6 +21,7 @@ public class SocioMgtImp implements SocioMgt{
     public boolean darDeAltaAbono(ObjetoAbono abono) {
     	abono.calcularIdAleatoria();
         abono.setFechaExpedicionAbono();
+		abono.setLocalidad();
         return abonoDatos.insertar(abono);
     }
 
