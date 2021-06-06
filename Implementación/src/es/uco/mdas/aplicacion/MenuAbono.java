@@ -20,12 +20,13 @@ public class MenuAbono {
         Scanner opcion;
         while (!salir) {
              System.out.println("|--------------------------------------------------------------------------|");
-             System.out.println("|\t Bienvenido al Programa Gestor de abonos                           |");
+             System.out.println("|\t Bienvenido al Programa Gestor de abonos y entradas                     |");
              System.out.println("|--------------------------------------------------------------------------|");
-             System.out.println("|\t Pulse 0 + Enter  -  Para dar de alta un abono a un socio          |");
-             System.out.println("|\t Pulse 1 + Enter  -  Para dar de baja un abono                     |");
-             System.out.println("|\t Pulse 2 + Enter  -  Para renovar un abono                         |");
-             System.out.println("|\t Pulse 3 + Enter  -  Para volver al menu principal                 |");
+             System.out.println("|        Pulse 0 + Enter  -  Para dar de alta un abono a un socio          |");
+             System.out.println("|        Pulse 1 + Enter  -  Para dar de baja un abono                     |");
+             System.out.println("|        Pulse 2 + Enter  -  Para renovar un abono                         |");
+             System.out.println("|        Pulse 3 + Enter  -  Para vender una entrada                       |");
+             System.out.println("|        Pulse 4 + Enter  -  Para volver al menu principal                 |");
              System.out.println("|--------------------------------------------------------------------------|");
             
             try {
@@ -66,6 +67,13 @@ public class MenuAbono {
                     salir = true;
                     System.out.println("Volviendo al menu principal ...");
                 break;
+                
+                case 4:
+                    salir = true;
+                    System.out.println("Volviendo al menu principal ...");
+                break;
+                
+                
                 
                     default:
                         System.out.println("La opcion escogida no se encuentra en el men�");

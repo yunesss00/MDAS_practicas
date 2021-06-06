@@ -10,7 +10,7 @@ public class ObjetoEntrada {
 	private ObjetoLocalidad localidad;
 	private Date fechaPartido;  
 	private Time horaPartido;
-	private String equipo;
+	private String comprador;
 	private float precio;
 	
 	/**
@@ -24,12 +24,12 @@ public class ObjetoEntrada {
 	 * @param precio
 	 */
 	
-	public ObjetoEntrada(long idEntrada, ObjetoLocalidad localidad, Date fechaPartido, Time horaPartido, String equipo, float precio ) {
+	public ObjetoEntrada(long idEntrada, ObjetoLocalidad localidad, Date fechaPartido, Time horaPartido, String comprador, float precio ) {
 		this.idEntrada = idEntrada;
 		this.localidad = localidad;
 		this.fechaPartido = fechaPartido;  
 		this.horaPartido = horaPartido;
-		this.equipo = equipo;
+		this.comprador = comprador;
 		this.precio = precio;
 	
 		
@@ -67,12 +67,12 @@ public class ObjetoEntrada {
 		this.horaPartido = horaPartido;
 	}
 
-	public String getEquipo() {
-		return equipo;
+	public String getComprador() {
+		return comprador;
 	}
 
-	public void setEquipo(String equipo) {
-		this.equipo = equipo;
+	public void setComprador(String equipo) {
+		this.comprador = equipo;
 	}
 
 	public float getPrecio() {
@@ -85,7 +85,7 @@ public class ObjetoEntrada {
 	
 	public String infoEntrada() {
 		String infoEntrada = "IDEntrada : " + idEntrada + " Localidad : " + localidad + " FechaPartido : " 
-				+ fechaPartido + " HoraPartido : " + horaPartido + " Equipo : " + equipo + " Precio : " + precio;
+				+ fechaPartido + " HoraPartido : " + horaPartido + " Comprador : " + comprador + " Precio : " + precio;
 		return infoEntrada;
 	}
 }
