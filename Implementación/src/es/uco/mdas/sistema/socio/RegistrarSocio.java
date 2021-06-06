@@ -11,5 +11,7 @@ public interface RegistrarSocio {
 	public boolean notificarAltaSocio(Long idSocio);
 	
 	public boolean modificarSocio(Long idSocio,ObjetoSocio socio);
+	
+	public boolean eliminarSocio(Long idSocio);
 
 }

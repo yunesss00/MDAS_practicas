@@ -25,5 +25,7 @@ public interface SocioMgt {
 	public TipoCarnet notificarTipoCarnet(long edad);
 	
 	public boolean modificarSocio(Long idSocio,ObjetoSocio socio);
+	
+	public boolean eliminarSocio(Long idSocio);
 
 }

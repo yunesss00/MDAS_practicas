@@ -59,8 +59,95 @@ public class SocioDatosImp implements SocioDatos{
 
     @Override
     public boolean borrar(Long idSocio) {
-        return false;
-        // TODO Auto-generated method stub
+    	Properties propiedades = new Properties();
+        FileReader ficheroPropiedades;
+        String nombreFichero = null;
+        Boolean resultado = false;
+        String nombreFicheroAuxiliar = null;
+        File ficheroLectura = null;
+		File ficheroEscritura = null;
+
+
+        try {
+
+            ficheroPropiedades = new FileReader(FICHEROPROPIEDADES);
+            propiedades.load(ficheroPropiedades);
+            nombreFichero = propiedades.getProperty(NOMBREFICHERO);
+            nombreFicheroAuxiliar = propiedades.getProperty(FICHEROTEMPORAL);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }      
+        
+        if (nombreFichero == null) return false;
+        
+        FileInputStream ficheroOrigen = null;
+		ObjectInputStream contenidoLectura = null;
+		
+		FileOutputStream ficheroDestino = null;
+		ObjectOutputStream contenidoEscritura = null;
+		
+		try {
+			
+			ficheroLectura = new File(nombreFichero);
+			ficheroOrigen = new FileInputStream (ficheroLectura);
+			contenidoLectura= new ObjectInputStream (ficheroOrigen);
+			
+			ficheroEscritura = new File(nombreFicheroAuxiliar);
+			ficheroDestino = new FileOutputStream (ficheroEscritura);
+			contenidoEscritura= new ObjectOutputStream (ficheroDestino);
+				
+			
+			
+		} catch (FileNotFoundException e) {
+
+			System.out.println("El fichero de " + nombreFichero + " no existe");
+			return resultado;
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+
+        if (contenidoLectura != null && contenidoEscritura != null) {
+			ObjetoSocio socioAuxiliar = null;
+			
+			try {
+				while (true)
+                 {
+					socioAuxiliar = (ObjetoSocio) contenidoLectura.readObject() ;
+					if (!socioAuxiliar.getIdSocio().equals(idSocio)) {
+						contenidoEscritura.writeObject(socioAuxiliar);
+					}	
+				}
+			} catch (EOFException e) {
+				
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+		
+			try {
+				contenidoLectura.close();
+				ficheroOrigen.close();
+				contenidoEscritura.close();
+				ficheroDestino.close();
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+			
+			ficheroLectura.delete();
+		    ficheroEscritura.renameTo(ficheroLectura);
+			
+		}
+
+
+        
+        return resultado;
         
     }
     
@@ -136,7 +223,7 @@ public class SocioDatosImp implements SocioDatos{
     	Properties propiedades = new Properties();
         FileReader ficheroPropiedades;
         String nombreFichero = null;
-        Boolean resultado = true;
+        Boolean resultado = false;
         String nombreFicheroAuxiliar = null;
         File ficheroLectura = null;
 		File ficheroEscritura = null;

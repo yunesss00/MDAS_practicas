@@ -53,7 +53,7 @@ public class MenuSocio {
 		    	ObjetoSocio nuevoSocio = solicitarDatos();
 			    registroSocio.setDatosSocio(nuevoSocio);
 			    System.out.println("Socio introducido con exito \n");
-			    System.out.println(nuevoSocio.mostrarDatosSocio());
+			    System.out.println(nuevoSocio.infoSocio());
 			   
 	    		break;
 		    	case 1:
@@ -61,7 +61,7 @@ public class MenuSocio {
 		    	long idBuscar = solicitarId();
 		    	ObjetoSocio socioEncontrado = busquedaSocio.mostrarDatosSocio(idBuscar);
 		    	if(socioEncontrado != null){
-		    		System.out.println(socioEncontrado.mostrarDatosSocio());
+		    		System.out.println(socioEncontrado.infoSocio());
 		    	}
 		
 		    	break;
@@ -70,12 +70,12 @@ public class MenuSocio {
 		    	long idModificar = solicitarId();
 			    socioEncontrado = busquedaSocio.mostrarDatosSocio(idModificar);
 			    if(socioEncontrado != null){
-			    	System.out.println(socioEncontrado.mostrarDatosSocio());
+			    	System.out.println("Este es el cliente que que quiere modificar \n" +socioEncontrado.infoSocio());
 			    }
 			    
 			    ObjetoSocio socioModificado = solicitarDatos();
-			    if(!registroSocio.modificarSocio(idModificar,socioModificado)) {
-			    	System.out.println("El socio se ha modificado correctamente\n"+socioModificado.mostrarDatosSocio());
+			    if(registroSocio.modificarSocio(idModificar,socioModificado)) {
+			    	System.out.println("El socio se ha modificado correctamente\n"+socioModificado.infoSocio());
 			    }
 			    else {
 			    	System.out.println("No se ha podido modificar con exito");
@@ -86,7 +86,17 @@ public class MenuSocio {
 		    	case 3:
 		    	
 		    	long idEliminar = solicitarId();
-				busquedaSocio.mostrarDatosSocio(idEliminar);
+		    	socioEncontrado = busquedaSocio.mostrarDatosSocio(idEliminar);
+			    if(socioEncontrado != null){
+			    	System.out.println("Este es el socio que quiere eliminar \n"+socioEncontrado.infoSocio());
+			    }
+			    
+			    if(!registroSocio.eliminarSocio(idEliminar)) {
+			    	System.out.println("Se ha eliminado al socio con id "+ socioEncontrado.getIdSocio() + " con exito");
+			    }
+			    else {
+			    	System.out.println("Se ha producido un error eliminando al socio, intentelo de nuevo");
+			    }
 		    		
 			    	break;
 		    	case 4:
@@ -96,7 +106,7 @@ public class MenuSocio {
 			    	break;
 		    	
 		    		default:
-		    			System.out.println("La opcion escogida no se encuentra en el men�");
+		    			System.out.println("La opcion escogida no se encuentra en el menu");
 		    			System.out.println("Intentelo de nuevo");
 		    } 
 		}

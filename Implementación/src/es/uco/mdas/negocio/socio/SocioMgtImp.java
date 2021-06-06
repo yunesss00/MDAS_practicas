@@ -114,5 +114,10 @@ public class SocioMgtImp implements SocioMgt{
 		socio.setIdSocio(socioAuxiliar.getIdSocio());
 		return socioDatos.modificar(socio);
 	}
+
+	@Override
+	public boolean eliminarSocio(Long idSocio) {
+		return socioDatos.borrar(idSocio);
+	}
     
 }

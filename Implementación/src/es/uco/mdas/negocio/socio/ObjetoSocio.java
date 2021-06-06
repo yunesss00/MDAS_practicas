@@ -79,8 +79,8 @@ public class ObjetoSocio implements Serializable {
 		this.idSocio = (long) Math.floor(Math.random()*(100-0+1)+0);
 	}
 	
-	public String mostrarDatosSocio() {
-		return "Datos del socio introducido: IdSocio = " + this.idSocio + "\nNombreSocio = " + this.nombreSocio +
+	public String infoSocio() {
+		return "Datos del socio: IdSocio = " + this.idSocio + "\nNombreSocio = " + this.nombreSocio +
 				"\nApellidosSocio = " + this.apellidosSocio + "\nFechaNacimiento = " + this.fechaNacimientoSocio;
 	}
 }

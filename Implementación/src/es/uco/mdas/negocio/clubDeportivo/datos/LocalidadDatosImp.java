@@ -62,13 +62,6 @@ public class LocalidadDatosImp implements LocalidadDatos {
         return resultado;
     }
 
-
-	@Override
-	public boolean borrar(ObjetoLocalidad objeto) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 	@Override
 	public ObjetoLocalidad buscar(long idObjeto) {
 		Properties propiedades = new Properties();

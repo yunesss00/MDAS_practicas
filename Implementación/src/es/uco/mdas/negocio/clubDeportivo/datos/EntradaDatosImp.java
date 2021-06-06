@@ -11,12 +11,6 @@ public class EntradaDatosImp implements EntradaDatos{
 	}
 
 	@Override
-	public boolean borrar(ObjetoEntrada objeto) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public ObjetoEntrada buscar(long idObjeto) {
 		// TODO Auto-generated method stub
 		return null;
