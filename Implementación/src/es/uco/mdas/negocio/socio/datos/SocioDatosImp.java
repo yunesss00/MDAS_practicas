@@ -50,7 +50,7 @@ public class SocioDatosImp implements SocioDatos{
         	}
         	
         } catch(FileNotFoundException e) {
-        	System.out.println("Hola");
+        	 System.out.println("El fichero no se encuentra disponible");
         } catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -12,6 +12,8 @@ import java.io.ObjectOutputStream;
 import java.util.Properties;
 
 import es.uco.mdas.negocio.clubDeportivo.ObjetoLocalidad;
+import es.uco.mdas.negocio.socio.ObjetoSocio;
+import es.uco.mdas.negocio.socio.datos.MiObjectOutputStream;
 
 
 public class LocalidadDatosImp implements LocalidadDatos {
@@ -33,26 +35,33 @@ public class LocalidadDatosImp implements LocalidadDatos {
         ObjectOutputStream datos;
 
         try {
-            ficheroPropiedades = new FileReader(FICHEROPROPIEDADES);
-            propiedades.load(ficheroPropiedades);
-            nombreFichero = propiedades.getProperty(NOMBREFICHERO);
-
-            fichero = new File(nombreFichero);
-            datos = new ObjectOutputStream(new FileOutputStream(fichero));
-            if(datos != null) {
-                datos.writeObject(objeto);
-                datos.close();
-                ficheroPropiedades.close();
-            }
-
+        	ficheroPropiedades = new FileReader(FICHEROPROPIEDADES);
+        	propiedades.load(ficheroPropiedades);
+        	nombreFichero = propiedades.getProperty(NOMBREFICHERO);
+        	
+        	fichero = new File(nombreFichero);
+        	
+        	if(fichero.length() == 0) {
+        		datos = new ObjectOutputStream(new FileOutputStream(fichero));
+        	}
+        	else {
+            	datos = new MiObjectOutputStream(new FileOutputStream(fichero,true));
+        	}
+        	
+        	if(datos != null) {
+        		datos.writeObject(objeto);
+        		datos.close();
+        		ficheroPropiedades.close();	
+        	}
+        	
         } catch(FileNotFoundException e) {
-            System.out.println("Hola");
+        	 System.out.println("El fichero no se encuentra disponible");
         } catch (IOException e) {
-            e.printStackTrace();
-        }
+			e.printStackTrace();
+		}
         return resultado;
-	}
-	
+    }
+
 
 	@Override
 	public boolean borrar(ObjetoLocalidad objeto) {
@@ -63,12 +72,12 @@ public class LocalidadDatosImp implements LocalidadDatos {
 	@Override
 	public ObjetoLocalidad buscar(long idObjeto) {
 		Properties propiedades = new Properties();
-		FileReader ficheroPropiedades;
+		FileReader ficheroPropiedades = null;
 		String nombreFichero = null;
 		ObjetoLocalidad datosLocalidad = null;
+		File fichero;
 		
-		
-		FileInputStream fichero = null;
+		FileInputStream ficheroDatos = null;
 		ObjectInputStream datos = null;
 		
 		
@@ -86,44 +95,47 @@ public class LocalidadDatosImp implements LocalidadDatos {
 		
 
 		
-		try {
-			fichero = new FileInputStream( nombreFichero );
-			datos = new ObjectInputStream( fichero );		
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		 try {
+	            fichero = new File(nombreFichero);
+	            ficheroDatos = new FileInputStream(fichero);
+	            datos = new ObjectInputStream(ficheroDatos);
+	        } catch (FileNotFoundException e) {
+	            e.printStackTrace();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
 		
 		if(datos!=null) {
 			ObjetoLocalidad localidad = null;
 			
-			try {
-				while(true) {
-					localidad = (ObjetoLocalidad) datos.readObject();
-					
-					if(localidad.getIdLocalidad()==idObjeto) {
-					 datosLocalidad=localidad;
-					 break;
-					}
-				}
-			}  catch (EOFException e ) {
-				e.printStackTrace();
-			}catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			
-			try {
-				datos.close();
-				fichero.close();
-			}catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return datosLocalidad;
-	}
+			  try {
+	            	localidad = (ObjetoLocalidad) datos.readObject();
+	            	while(localidad != null) {
+	            		if(localidad.getIdLocalidad()== idObjeto) {
+	                    	datosLocalidad = localidad;
+	                    	break;
+	                    }
+	            		localidad = (ObjetoLocalidad) datos.readObject();
+	            	}
+	                
+	            }  catch (EOFException e ) {
+	                System.out.println("No se ha encontrado a ese socio");
+	            }catch (ClassNotFoundException e) {
+	                e.printStackTrace();
+	            } catch (IOException e) {
+	                e.printStackTrace();
+	            }
+
+	            try {
+	                datos.close();
+	                ficheroDatos.close();
+	                ficheroPropiedades.close();
+	            }catch (IOException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	        return datosLocalidad;
+	    }
 
 	@Override
 	public boolean modificar(ObjetoLocalidad objeto) {
