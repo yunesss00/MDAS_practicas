@@ -6,6 +6,4 @@ public interface AccesoDatos <T>{
 	
 	public T buscar(long idObjeto);
 	
-	public boolean modificar(T objeto);
-	
 }

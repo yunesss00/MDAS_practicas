@@ -1,15 +1,19 @@
 package es.uco.mdas.negocio.clubDeportivo;
 
-import java.sql.Time;
+import java.io.Serializable;
 import java.util.Date;
 
-public class ObjetoEntrada {
+public class ObjetoEntrada implements Serializable {
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private long idEntrada;
-	private ObjetoLocalidad localidad;
+	private long idLocalidad;
 	private Date fechaPartido;  
-	private Time horaPartido;
+	private String horaPartido;
 	private String comprador;
 	private float precio;
 	
@@ -24,9 +28,9 @@ public class ObjetoEntrada {
 	 * @param precio
 	 */
 	
-	public ObjetoEntrada(long idEntrada, ObjetoLocalidad localidad, Date fechaPartido, Time horaPartido, String comprador, float precio ) {
+	public ObjetoEntrada(long idEntrada, long idLocalidad, Date fechaPartido, String horaPartido, String comprador, float precio ) {
 		this.idEntrada = idEntrada;
-		this.localidad = localidad;
+		this.idLocalidad = idLocalidad;
 		this.fechaPartido = fechaPartido;  
 		this.horaPartido = horaPartido;
 		this.comprador = comprador;
@@ -34,6 +38,8 @@ public class ObjetoEntrada {
 	
 		
 	}
+	
+	public ObjetoEntrada() {}
 	
 	public long getIdEntrada() {
 		return idEntrada;
@@ -43,12 +49,12 @@ public class ObjetoEntrada {
 		this.idEntrada = idEntrada;
 	}
 
-	public ObjetoLocalidad getLocalidad() {
-		return localidad;
+	public long getLocalidad() {
+		return idLocalidad;
 	}
 
-	public void setLocalidad(ObjetoLocalidad localidad) {
-		this.localidad = localidad;
+	public void setIdLocalidad(long idlocalidad) {
+		this.idLocalidad = idlocalidad;
 	}
 
 	public Date getFechaPartido() {
@@ -59,11 +65,11 @@ public class ObjetoEntrada {
 		this.fechaPartido = fechaPartido;
 	}
 
-	public Time getHoraPartido() {
+	public String getHoraPartido() {
 		return horaPartido;
 	}
 
-	public void setHoraPartido(Time horaPartido) {
+	public void setHoraPartido(String horaPartido) {
 		this.horaPartido = horaPartido;
 	}
 
@@ -71,8 +77,8 @@ public class ObjetoEntrada {
 		return comprador;
 	}
 
-	public void setComprador(String equipo) {
-		this.comprador = equipo;
+	public void setComprador(String comprador) {
+		this.comprador = comprador;
 	}
 
 	public float getPrecio() {
@@ -83,8 +89,14 @@ public class ObjetoEntrada {
 		this.precio = precio;
 	}
 	
+	public void calcularIdAleatoria() {
+		int idMaximo = 9999;
+		int idMinimo = 0;
+		this.idEntrada = (long) Math.floor(Math.random()*(idMaximo-idMinimo+1)+idMinimo);
+	}
+	
 	public String infoEntrada() {
-		String infoEntrada = "IDEntrada : " + idEntrada + " Localidad : " + localidad + " FechaPartido : " 
+		String infoEntrada = "IDEntrada : " + idEntrada + " Localidad : " + idLocalidad + " FechaPartido : " 
 				+ fechaPartido + " HoraPartido : " + horaPartido + " Comprador : " + comprador + " Precio : " + precio;
 		return infoEntrada;
 	}

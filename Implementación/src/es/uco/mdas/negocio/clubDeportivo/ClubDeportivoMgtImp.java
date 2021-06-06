@@ -48,4 +48,10 @@ public class ClubDeportivoMgtImp implements ClubDeportivoMgt{
 		return localidad.infoLocalidad();
 	}
 
+	@Override
+	public boolean setDatosEntrada(ObjetoEntrada entrada) {
+		entrada.calcularIdAleatoria();
+		return entradaDatos.insertar(entrada);
+	}
+
 }

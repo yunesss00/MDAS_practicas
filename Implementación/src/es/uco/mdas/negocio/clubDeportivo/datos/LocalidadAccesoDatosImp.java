@@ -16,14 +16,9 @@ import es.uco.mdas.negocio.socio.datos.MiObjectOutputStream;
 
 
 public class LocalidadAccesoDatosImp implements LocalidadAccesoDatos {
-
 	private static final String FICHEROPROPIEDADES = "ficheros.properties";
-	
 	private static final String NOMBREFICHERO = "ficheroLocalidades";
-	
-	private static final String FICHEROTEMPORAL = "ficheroAuxiliar";
-	
-	
+		
 	@Override
 	public boolean insertar(ObjetoLocalidad objeto) {
 		Properties propiedades = new Properties();
@@ -111,7 +106,7 @@ public class LocalidadAccesoDatosImp implements LocalidadAccesoDatos {
 	            	}
 	                
 	            }  catch (EOFException e ) {
-	                System.out.println("No se ha encontrado a ese socio");
+	                System.out.println("No se ha encontrado a esa localidad");
 	            }catch (ClassNotFoundException e) {
 	                e.printStackTrace();
 	            } catch (IOException e) {
@@ -128,104 +123,5 @@ public class LocalidadAccesoDatosImp implements LocalidadAccesoDatos {
 	        }
 	        return datosLocalidad;
 	    }
-
-	@Override
-	public boolean modificar(ObjetoLocalidad objeto) {
-		Properties propiedades = new Properties();
-        FileReader ficheroPropiedades;
-        String nombreFichero = null;
-        String nombreFicheroAuxiliar = null;
-        Boolean resultado = true;
-
-        File ficheroLectura = null;
-		File ficheroEscritura = null;
-
-
-        try {
-
-            ficheroPropiedades = new FileReader(FICHEROPROPIEDADES);
-            propiedades.load(ficheroPropiedades);
-            nombreFichero = propiedades.getProperty(NOMBREFICHERO);
-            nombreFicheroAuxiliar = propiedades.getProperty(FICHEROTEMPORAL);
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }      
-        
-        if (nombreFichero == null) return false;
-        
-        FileInputStream ficheroOrigen = null;
-		ObjectInputStream contenidoLectura = null;
-		
-		FileOutputStream ficheroDestino = null;
-		ObjectOutputStream contenidoEscritura = null;
-		
-		try {
-			
-			ficheroLectura = new File(nombreFichero);
-			ficheroOrigen = new FileInputStream (ficheroEscritura);
-			contenidoLectura= new ObjectInputStream (ficheroOrigen);
-			
-			ficheroEscritura = new File(nombreFicheroAuxiliar);
-			ficheroDestino = new FileOutputStream (ficheroLectura);
-			contenidoEscritura= new ObjectOutputStream (ficheroDestino);
-				
-			
-			
-		} catch (FileNotFoundException e) {
-
-			System.out.println("El fichero de " + nombreFichero + " no existe");
-			return resultado;
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
-
-        if (contenidoLectura != null && contenidoEscritura != null) {
-			ObjetoLocalidad LocalidadAuxiliar = null;
-			
-			try {
-				while (true)
-                 {
-					LocalidadAuxiliar = (ObjetoLocalidad) contenidoLectura.readObject() ;
-					if (LocalidadAuxiliar.getIdLocalidad() == (objeto.getIdLocalidad())) 
-                    {
-						LocalidadAuxiliar = objeto;
-						resultado = !resultado;
-					}
-					contenidoEscritura.writeObject(LocalidadAuxiliar);
-						
-				}
-			} catch (EOFException e) {
-				
-			} catch (ClassNotFoundException e) {
-				
-				e.printStackTrace();
-			} catch (IOException e) {
-				
-				e.printStackTrace();
-			}
-		
-			try {
-				contenidoLectura.close();
-				ficheroOrigen.close();
-				contenidoEscritura.close();
-				ficheroDestino.close();
-			} catch (IOException e) {
-				
-				e.printStackTrace();
-			}
-			
-			ficheroLectura.delete();
-		    ficheroEscritura.renameTo(ficheroLectura);
-			
-		}
-
-
-        
-        return resultado;
-    }
 
 }

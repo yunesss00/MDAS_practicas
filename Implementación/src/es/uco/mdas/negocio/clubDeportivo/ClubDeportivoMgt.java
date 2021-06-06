@@ -13,5 +13,7 @@ public interface ClubDeportivoMgt {
 	public void actualizarLocalidad(Long idLocalidad);
 	
 	public String notificarPago(Long idLocalidad);
+	
+	public boolean setDatosEntrada(ObjetoEntrada entrada);
 
 }

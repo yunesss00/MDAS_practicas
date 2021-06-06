@@ -20,7 +20,7 @@ public class MenuPrincipal {
 				 System.out.println("|        Bienvenido al Programa Gestor del Club deportivo                  |");
 				 System.out.println("|--------------------------------------------------------------------------|");
 				 System.out.println("|        Pulse 0 + Enter  -  Para gestionar socios                     	   |");
-				 System.out.println("|        Pulse 1 + Enter  -  Para gestionar abonos y entradas                 |");
+				 System.out.println("|        Pulse 1 + Enter  -  Para gestionar abonos y entradas              |");
 				 System.out.println("|        Pulse 2 + Enter  -  Para salir de la aplicacion                   |");
 				 System.out.println("|--------------------------------------------------------------------------|");
 				
