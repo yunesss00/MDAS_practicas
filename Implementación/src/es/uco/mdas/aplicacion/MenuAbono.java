@@ -104,6 +104,8 @@ public class MenuAbono {
     
     idAbono = Long.parseLong(entrada);
 
+    datosScaner.close();
+    
     
     return idAbono;
 
