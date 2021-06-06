@@ -107,5 +107,12 @@ public class SocioMgtImp implements SocioMgt{
 		}
 		return tipoCarnet;
 	}
+
+	@Override
+	public boolean modificarSocio(Long idSocio,ObjetoSocio socio) {
+		ObjetoSocio socioAuxiliar = socioDatos.buscar(idSocio);
+		socio.setIdSocio(socioAuxiliar.getIdSocio());
+		return socioDatos.modificar(socio);
+	}
     
 }

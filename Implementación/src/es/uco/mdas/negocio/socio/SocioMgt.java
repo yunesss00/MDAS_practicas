@@ -23,5 +23,7 @@ public interface SocioMgt {
 	public long comprobarEdadSocio(Long idSocio);
 	
 	public TipoCarnet notificarTipoCarnet(long edad);
+	
+	public boolean modificarSocio(Long idSocio,ObjetoSocio socio);
 
 }

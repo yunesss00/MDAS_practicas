@@ -58,7 +58,6 @@ public class MenuSocio {
 	    		break;
 		    	case 1:
 		    	
-		    
 		    	long idBuscar = solicitarId();
 		    	ObjetoSocio socioEncontrado = busquedaSocio.mostrarDatosSocio(idBuscar);
 		    	if(socioEncontrado != null){
@@ -69,7 +68,19 @@ public class MenuSocio {
 		    	case 2:
 		    	
 		    	long idModificar = solicitarId();
-			    busquedaSocio.mostrarDatosSocio(idModificar);
+			    socioEncontrado = busquedaSocio.mostrarDatosSocio(idModificar);
+			    if(socioEncontrado != null){
+			    	System.out.println(socioEncontrado.mostrarDatosSocio());
+			    }
+			    
+			    ObjetoSocio socioModificado = solicitarDatos();
+			    if(!registroSocio.modificarSocio(idModificar,socioModificado)) {
+			    	System.out.println("El socio se ha modificado correctamente\n"+socioModificado.mostrarDatosSocio());
+			    }
+			    else {
+			    	System.out.println("No se ha podido modificar con exito");
+			    }
+			    
 		    		
 		    	break;
 		    	case 3:

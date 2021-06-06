@@ -1,5 +1,6 @@
 package es.uco.mdas.negocio.socio.datos;
 
+import es.uco.mdas.negocio.socio.ObjetoAbono;
 import es.uco.mdas.negocio.socio.ObjetoSocio;
 import java.util.Properties;
 import java.io.File;
@@ -17,6 +18,7 @@ public class SocioDatosImp implements SocioDatos{
 	
 	private static final String FICHEROPROPIEDADES = "ficheros.properties";
 	private static final String NOMBREFICHERO = "ficheroSocios";
+	private static final String FICHEROTEMPORAL = "ficheroAuxiliar";
 
     @Override
     public boolean insertar(ObjetoSocio socio) {
@@ -131,8 +133,100 @@ public class SocioDatosImp implements SocioDatos{
 
     @Override
     public boolean modificar(ObjetoSocio socio) {
-        return false;
-        // TODO Auto-generated method stub
+    	Properties propiedades = new Properties();
+        FileReader ficheroPropiedades;
+        String nombreFichero = null;
+        Boolean resultado = true;
+        String nombreFicheroAuxiliar = null;
+        File ficheroLectura = null;
+		File ficheroEscritura = null;
+
+
+        try {
+
+            ficheroPropiedades = new FileReader(FICHEROPROPIEDADES);
+            propiedades.load(ficheroPropiedades);
+            nombreFichero = propiedades.getProperty(NOMBREFICHERO);
+            nombreFicheroAuxiliar = propiedades.getProperty(FICHEROTEMPORAL);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }      
+        
+        if (nombreFichero == null) return false;
+        
+        FileInputStream ficheroOrigen = null;
+		ObjectInputStream contenidoLectura = null;
+		
+		FileOutputStream ficheroDestino = null;
+		ObjectOutputStream contenidoEscritura = null;
+		
+		try {
+			
+			ficheroLectura = new File(nombreFichero);
+			ficheroOrigen = new FileInputStream (ficheroLectura);
+			contenidoLectura= new ObjectInputStream (ficheroOrigen);
+			
+			ficheroEscritura = new File(nombreFicheroAuxiliar);
+			ficheroDestino = new FileOutputStream (ficheroEscritura);
+			contenidoEscritura= new ObjectOutputStream (ficheroDestino);
+				
+			
+			
+		} catch (FileNotFoundException e) {
+
+			System.out.println("El fichero de " + nombreFichero + " no existe");
+			return resultado;
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+
+        if (contenidoLectura != null && contenidoEscritura != null) {
+			ObjetoSocio socioAuxiliar = null;
+			
+			try {
+				while (true)
+                 {
+					socioAuxiliar = (ObjetoSocio) contenidoLectura.readObject() ;
+					if (socioAuxiliar.getIdSocio().equals(socio.getIdSocio())) 
+                    {
+						socioAuxiliar = socio;
+						resultado = !resultado;
+					}
+					contenidoEscritura.writeObject(socioAuxiliar);
+						
+				}
+			} catch (EOFException e) {
+				
+			} catch (ClassNotFoundException e) {
+				
+				e.printStackTrace();
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+		
+			try {
+				contenidoLectura.close();
+				ficheroOrigen.close();
+				contenidoEscritura.close();
+				ficheroDestino.close();
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+			
+			ficheroLectura.delete();
+		    ficheroEscritura.renameTo(ficheroLectura);
+			
+		}
+
+
+        
+        return resultado;
         
     }
     

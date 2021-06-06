@@ -9,5 +9,7 @@ public interface RegistrarSocio {
 	public ObjetoSocio setTipoSocio(String tipoSocio, ObjetoSocio socio);
 	
 	public boolean notificarAltaSocio(Long idSocio);
+	
+	public boolean modificarSocio(Long idSocio,ObjetoSocio socio);
 
 }

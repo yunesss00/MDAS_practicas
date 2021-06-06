@@ -28,4 +28,9 @@ public class RegistrarSocioImp implements RegistrarSocio{
 		return true;
 	}
 
+	@Override
+	public boolean modificarSocio(Long idSocio,ObjetoSocio socio) {
+		return this.gestorSocio.modificarSocio(idSocio,socio);
+	}
+
 }
