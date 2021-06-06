@@ -47,12 +47,12 @@ public class MenuPrincipal {
 			    	break;
 			    	case 2:
 						cerrar = true;
-			    		System.out.println("Cerrando aplicación ...");
+			    		System.out.println("Cerrando aplicacion ...");
 			    		
 			    	break;
 			    	
 			    		default:
-			    			System.out.println("La opcion escogida no se encuentra en el men�");
+			    			System.out.println("La opcion escogida no se encuentra en el menu");
 			    			System.out.println("Intentelo de nuevo");
 			    } 
 			}

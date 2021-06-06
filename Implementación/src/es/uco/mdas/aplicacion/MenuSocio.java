@@ -27,11 +27,11 @@ public class MenuSocio {
 		 System.out.println("|----------------------------------------------------------------|");
 		 System.out.println("|            Bienvenido al GESTOR DE SOCIOS                      |");
 		 System.out.println("|----------------------------------------------------------------|");
-		 System.out.println("|        Pulse 0 + Enter  -  Para a�adir un nuevo socio          |");
+		 System.out.println("|        Pulse 0 + Enter  -  Para a�adir un nuevo socio          |");
 		 System.out.println("|        Pulse 1 + Enter  -  Para buscar un socio                |");
 		 System.out.println("|        Pulse 2 + Enter  -  Para modificar un socio             |");
 		 System.out.println("|        Pulse 3 + Enter  -  Para eliminar un socio              |");
-		 System.out.println("|        Pulse 4 + Enter  -  Para volver al menú principal       |");
+		 System.out.println("|        Pulse 4 + Enter  -  Para volver al menu principal       |");
 		 System.out.println("|----------------------------------------------------------------|");
 		 
 		 
@@ -80,7 +80,7 @@ public class MenuSocio {
 			    	break;
 		    	case 4:
 		    		salir = true;
-		    		System.out.println("Volviendo al menú principal ...");
+		    		System.out.println("Volviendo al menu principal ...");
 			    		
 			    	break;
 		    	
