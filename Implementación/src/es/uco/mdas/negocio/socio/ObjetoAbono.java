@@ -104,6 +104,12 @@ public class ObjetoAbono implements Serializable{
 		fechaExpedicion = LocalDate.parse(aux);
 		this.fechaExpedicionAbono = fechaExpedicion;
 	}
+	
+	public void calcularIdAleatoria() {
+		int idMaximo = 9999;
+		int idMinimo = 0;
+        this.idAbono = (long) Math.floor(Math.random()*(idMaximo-idMinimo+1)+idMinimo);
+    }
 
 	public String infoAbono() {
 		return "IDSocio : " + idSocio +"\nIDAbono : " + idAbono +" \nDeporte : " + deporteAbono +
