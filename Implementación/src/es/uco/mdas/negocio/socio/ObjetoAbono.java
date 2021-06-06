@@ -106,8 +106,8 @@ public class ObjetoAbono implements Serializable{
 	}
 
 	public String infoAbono() {
-		String infoAbono = "IDSocio : " + idSocio +"IDAbono : " + idAbono +" Deporte : " + deporteAbono +
-			" Tipo abono : " + tipoAbono + " FechaExpedicion : " + fechaExpedicionAbono + " Localidad : " + localidad;
-		return infoAbono;
+		return "IDSocio : " + idSocio +"\nIDAbono : " + idAbono +" \nDeporte : " + deporteAbono +
+			"\nTipo abono : " + tipoAbono + "\nFechaExpedicion : " + fechaExpedicionAbono + "\nLocalidad : " + localidad;
+		
 	}
 }

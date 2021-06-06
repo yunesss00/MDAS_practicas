@@ -79,13 +79,12 @@ public class AbonoDatosImp implements AbonoDatos{
     @Override
     public ObjetoAbono buscar(Long idAbono) {
     	Properties propiedades = new Properties();
-        FileReader ficheroPropiedades;
+        FileReader ficheroPropiedades = null;
         String nombreFichero = null;
         ObjetoAbono datosAbono = null;
-
-
-        FileInputStream fichero = null;
-        ObjectInputStream contenido = null;
+        File fichero;
+        FileInputStream ficheroDatos = null;
+        ObjectInputStream datos = null;
 
 
         try {
@@ -103,28 +102,30 @@ public class AbonoDatosImp implements AbonoDatos{
 
 
         try {
-            fichero = new FileInputStream( nombreFichero );
-            contenido = new ObjectInputStream( fichero );
+            fichero = new File(nombreFichero);
+            ficheroDatos = new FileInputStream(fichero);
+            datos = new ObjectInputStream(ficheroDatos);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        if(contenido!=null) {
+        if(datos!=null) {
             ObjetoAbono abono = null;
 
             try {
-                while(true) {
-                    abono = (ObjetoAbono) contenido.readObject();
-
-                    if(abono.getIdAbono()==idAbono) {
-                     datosAbono=abono;
-                     break;
+            	abono = (ObjetoAbono) datos.readObject();
+            	while(abono != null) {
+            		if(abono.getIdSocio().equals(abono)) {
+                    	datosAbono = abono;
+                    	break;
                     }
-                }
+            		abono = (ObjetoAbono) datos.readObject();
+            	}
+                
             }  catch (EOFException e ) {
-                e.printStackTrace();
+                System.out.println("No se ha encontrado a ese socio");
             }catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -132,8 +133,9 @@ public class AbonoDatosImp implements AbonoDatos{
             }
 
             try {
-                contenido.close();
-                fichero.close();
+                datos.close();
+                ficheroDatos.close();
+                ficheroPropiedades.close();
             }catch (IOException e) {
                 e.printStackTrace();
             }

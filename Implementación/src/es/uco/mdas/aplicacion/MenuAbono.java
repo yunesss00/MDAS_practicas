@@ -42,8 +42,8 @@ public class MenuAbono {
                 case 0: 
                     abono = solicitarParametros();
                     gestorAbono.darDeAltaAbono(abono);
-                    abono = gestorAbono.obtenerInformacionAbono(abono.getIdAbono());
-                    abono.infoAbono();
+                    System.out.println("Socio introducido con exito \n");
+			        System.out.println(abono.infoAbono());
 
 
                 
